@@ -31,3 +31,7 @@ GitHub Pages 地址以成功的部署记录为准，发布说明见 [托管](doc
 - [本地验证结果](docs/validation.md)
 
 原团队项目作为参考保留，当前发布不代表历史数据已迁入，也不代表旧系统已下线。
+
+正式入口：[打开个人版](https://ryanwilllo.github.io/massage-personal/)。
+
+- [1.0.0 发布记录](docs/releases/1.0.0.md)
