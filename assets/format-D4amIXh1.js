@@ -1,0 +1,1 @@
+function r(n){const t=Number(n);return"¥"+(Number.isFinite(t)?t:0).toFixed(1)}function s(n){if(!n)return"";const t=n.split(" ")[0].split("-");return t[1]+"月"+t[2]+"日"}function i(n){if(!n)return"";const t=n.split(" ");return t.length>1?t[1].substring(0,5):""}export{s as a,i as b,r as f};
