@@ -1,1 +1,0 @@
-import{_ as o,i as a,c as t,d as s,w as c,q as r,g as d}from"./index-C7eGbfoF.js";const _={},l={class:"menu-card"};function u(e,p){const n=d("van-cell-group");return a(),t("div",l,[s(n,null,{default:c(()=>[r(e.$slots,"default",{},void 0,!0)]),_:3})])}const i=o(_,[["render",u],["__scopeId","data-v-6ada3d21"]]);export{i as M};
