@@ -1,0 +1,24 @@
+{
+  "name": "massage-personal",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "test": "node --test tests/domain.test.js tests/storage.test.js",
+    "verify:build": "node --test tests/pwa-build.test.js"
+  },
+  "dependencies": {
+    "vue": "^3.4.0",
+    "vue-router": "^4.3.0",
+    "vant": "^4.8.0",
+    "decimal.js": "10.6.0"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^5.0.0",
+    "vite": "^6.4.3",
+    "fake-indexeddb": "6.2.4"
+  }
+}

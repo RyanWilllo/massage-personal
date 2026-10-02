@@ -1,0 +1,1509 @@
+{
+  "source_calculator_sha256": "2026d709ec630ae02598f78daa8cfbca4eb29564a67ac07dd781702d8b3f97e2",
+  "cases": [
+    {
+      "rate": 40,
+      "project_id": 1,
+      "duration": 15,
+      "income": 10.0,
+      "work_minutes": 15.0,
+      "work_hours": 0.25
+    },
+    {
+      "rate": 40,
+      "project_id": 1,
+      "duration": 30,
+      "income": 20.0,
+      "work_minutes": 30.0,
+      "work_hours": 0.5
+    },
+    {
+      "rate": 40,
+      "project_id": 1,
+      "duration": 45,
+      "income": 30.0,
+      "work_minutes": 45.0,
+      "work_hours": 0.75
+    },
+    {
+      "rate": 40,
+      "project_id": 1,
+      "duration": 60,
+      "income": 40.0,
+      "work_minutes": 60.0,
+      "work_hours": 1.0
+    },
+    {
+      "rate": 40,
+      "project_id": 1,
+      "duration": 75,
+      "income": 50.0,
+      "work_minutes": 75.0,
+      "work_hours": 1.25
+    },
+    {
+      "rate": 40,
+      "project_id": 1,
+      "duration": 90,
+      "income": 60.0,
+      "work_minutes": 90.0,
+      "work_hours": 1.5
+    },
+    {
+      "rate": 40,
+      "project_id": 1,
+      "duration": 105,
+      "income": 70.0,
+      "work_minutes": 105.0,
+      "work_hours": 1.75
+    },
+    {
+      "rate": 40,
+      "project_id": 1,
+      "duration": 120,
+      "income": 80.0,
+      "work_minutes": 120.0,
+      "work_hours": 2.0
+    },
+    {
+      "rate": 40,
+      "project_id": 1,
+      "duration": 135,
+      "income": 90.0,
+      "work_minutes": 135.0,
+      "work_hours": 2.25
+    },
+    {
+      "rate": 40,
+      "project_id": 1,
+      "duration": 150,
+      "income": 100.0,
+      "work_minutes": 150.0,
+      "work_hours": 2.5
+    },
+    {
+      "rate": 40,
+      "project_id": 1,
+      "duration": 165,
+      "income": 110.0,
+      "work_minutes": 165.0,
+      "work_hours": 2.75
+    },
+    {
+      "rate": 40,
+      "project_id": 1,
+      "duration": 180,
+      "income": 120.0,
+      "work_minutes": 180.0,
+      "work_hours": 3.0
+    },
+    {
+      "rate": 40,
+      "project_id": 1,
+      "duration": 195,
+      "income": 130.0,
+      "work_minutes": 195.0,
+      "work_hours": 3.25
+    },
+    {
+      "rate": 40,
+      "project_id": 1,
+      "duration": 210,
+      "income": 140.0,
+      "work_minutes": 210.0,
+      "work_hours": 3.5
+    },
+    {
+      "rate": 40,
+      "project_id": 1,
+      "duration": 225,
+      "income": 150.0,
+      "work_minutes": 225.0,
+      "work_hours": 3.75
+    },
+    {
+      "rate": 40,
+      "project_id": 1,
+      "duration": 240,
+      "income": 160.0,
+      "work_minutes": 240.0,
+      "work_hours": 4.0
+    },
+    {
+      "rate": 40,
+      "project_id": 2,
+      "duration": 15,
+      "income": 20.0,
+      "work_minutes": 30.0,
+      "work_hours": 0.5
+    },
+    {
+      "rate": 40,
+      "project_id": 2,
+      "duration": 30,
+      "income": 40.0,
+      "work_minutes": 60.0,
+      "work_hours": 1.0
+    },
+    {
+      "rate": 40,
+      "project_id": 2,
+      "duration": 45,
+      "income": 60.0,
+      "work_minutes": 90.0,
+      "work_hours": 1.5
+    },
+    {
+      "rate": 40,
+      "project_id": 2,
+      "duration": 60,
+      "income": 80.0,
+      "work_minutes": 120.0,
+      "work_hours": 2.0
+    },
+    {
+      "rate": 40,
+      "project_id": 2,
+      "duration": 75,
+      "income": 100.0,
+      "work_minutes": 150.0,
+      "work_hours": 2.5
+    },
+    {
+      "rate": 40,
+      "project_id": 2,
+      "duration": 90,
+      "income": 120.0,
+      "work_minutes": 180.0,
+      "work_hours": 3.0
+    },
+    {
+      "rate": 40,
+      "project_id": 2,
+      "duration": 105,
+      "income": 140.0,
+      "work_minutes": 210.0,
+      "work_hours": 3.5
+    },
+    {
+      "rate": 40,
+      "project_id": 2,
+      "duration": 120,
+      "income": 160.0,
+      "work_minutes": 240.0,
+      "work_hours": 4.0
+    },
+    {
+      "rate": 40,
+      "project_id": 2,
+      "duration": 135,
+      "income": 180.0,
+      "work_minutes": 270.0,
+      "work_hours": 4.5
+    },
+    {
+      "rate": 40,
+      "project_id": 2,
+      "duration": 150,
+      "income": 200.0,
+      "work_minutes": 300.0,
+      "work_hours": 5.0
+    },
+    {
+      "rate": 40,
+      "project_id": 2,
+      "duration": 165,
+      "income": 220.0,
+      "work_minutes": 330.0,
+      "work_hours": 5.5
+    },
+    {
+      "rate": 40,
+      "project_id": 2,
+      "duration": 180,
+      "income": 240.0,
+      "work_minutes": 360.0,
+      "work_hours": 6.0
+    },
+    {
+      "rate": 40,
+      "project_id": 2,
+      "duration": 195,
+      "income": 260.0,
+      "work_minutes": 390.0,
+      "work_hours": 6.5
+    },
+    {
+      "rate": 40,
+      "project_id": 2,
+      "duration": 210,
+      "income": 280.0,
+      "work_minutes": 420.0,
+      "work_hours": 7.0
+    },
+    {
+      "rate": 40,
+      "project_id": 2,
+      "duration": 225,
+      "income": 300.0,
+      "work_minutes": 450.0,
+      "work_hours": 7.5
+    },
+    {
+      "rate": 40,
+      "project_id": 2,
+      "duration": 240,
+      "income": 320.0,
+      "work_minutes": 480.0,
+      "work_hours": 8.0
+    },
+    {
+      "rate": 40,
+      "project_id": 3,
+      "duration": 90,
+      "income": 90.0,
+      "work_minutes": 135.0,
+      "work_hours": 2.25
+    },
+    {
+      "rate": 40,
+      "project_id": 3,
+      "duration": 105,
+      "income": 105.0,
+      "work_minutes": 157.5,
+      "work_hours": 2.625
+    },
+    {
+      "rate": 40,
+      "project_id": 3,
+      "duration": 120,
+      "income": 120.0,
+      "work_minutes": 180.0,
+      "work_hours": 3.0
+    },
+    {
+      "rate": 40,
+      "project_id": 3,
+      "duration": 135,
+      "income": 135.0,
+      "work_minutes": 202.5,
+      "work_hours": 3.375
+    },
+    {
+      "rate": 40,
+      "project_id": 3,
+      "duration": 150,
+      "income": 150.0,
+      "work_minutes": 225.0,
+      "work_hours": 3.75
+    },
+    {
+      "rate": 40,
+      "project_id": 3,
+      "duration": 165,
+      "income": 165.0,
+      "work_minutes": 247.5,
+      "work_hours": 4.125
+    },
+    {
+      "rate": 40,
+      "project_id": 3,
+      "duration": 180,
+      "income": 180.0,
+      "work_minutes": 270.0,
+      "work_hours": 4.5
+    },
+    {
+      "rate": 40,
+      "project_id": 3,
+      "duration": 195,
+      "income": 195.0,
+      "work_minutes": 292.5,
+      "work_hours": 4.875
+    },
+    {
+      "rate": 40,
+      "project_id": 3,
+      "duration": 210,
+      "income": 210.0,
+      "work_minutes": 315.0,
+      "work_hours": 5.25
+    },
+    {
+      "rate": 40,
+      "project_id": 3,
+      "duration": 225,
+      "income": 225.0,
+      "work_minutes": 337.5,
+      "work_hours": 5.625
+    },
+    {
+      "rate": 40,
+      "project_id": 3,
+      "duration": 240,
+      "income": 240.0,
+      "work_minutes": 360.0,
+      "work_hours": 6.0
+    },
+    {
+      "rate": 40,
+      "project_id": 5,
+      "duration": 30,
+      "income": 20.0,
+      "work_minutes": 30.0,
+      "work_hours": 0.5
+    },
+    {
+      "rate": 40,
+      "project_id": 6,
+      "duration": 30,
+      "income": 20.0,
+      "work_minutes": 30.0,
+      "work_hours": 0.5
+    },
+    {
+      "rate": 40,
+      "project_id": 7,
+      "duration": null,
+      "income": 3.0,
+      "work_minutes": 0.0,
+      "work_hours": 0.0
+    },
+    {
+      "rate": 40,
+      "project_id": 8,
+      "duration": null,
+      "income": 2.0,
+      "work_minutes": 0.0,
+      "work_hours": 0.0
+    },
+    {
+      "rate": 40.1,
+      "project_id": 1,
+      "duration": 15,
+      "income": 10.0,
+      "work_minutes": 15.0,
+      "work_hours": 0.25
+    },
+    {
+      "rate": 40.1,
+      "project_id": 1,
+      "duration": 30,
+      "income": 20.1,
+      "work_minutes": 30.0,
+      "work_hours": 0.5
+    },
+    {
+      "rate": 40.1,
+      "project_id": 1,
+      "duration": 45,
+      "income": 30.1,
+      "work_minutes": 45.0,
+      "work_hours": 0.75
+    },
+    {
+      "rate": 40.1,
+      "project_id": 1,
+      "duration": 60,
+      "income": 40.1,
+      "work_minutes": 60.0,
+      "work_hours": 1.0
+    },
+    {
+      "rate": 40.1,
+      "project_id": 1,
+      "duration": 75,
+      "income": 50.1,
+      "work_minutes": 75.0,
+      "work_hours": 1.25
+    },
+    {
+      "rate": 40.1,
+      "project_id": 1,
+      "duration": 90,
+      "income": 60.2,
+      "work_minutes": 90.0,
+      "work_hours": 1.5
+    },
+    {
+      "rate": 40.1,
+      "project_id": 1,
+      "duration": 105,
+      "income": 70.2,
+      "work_minutes": 105.0,
+      "work_hours": 1.75
+    },
+    {
+      "rate": 40.1,
+      "project_id": 1,
+      "duration": 120,
+      "income": 80.2,
+      "work_minutes": 120.0,
+      "work_hours": 2.0
+    },
+    {
+      "rate": 40.1,
+      "project_id": 1,
+      "duration": 135,
+      "income": 90.2,
+      "work_minutes": 135.0,
+      "work_hours": 2.25
+    },
+    {
+      "rate": 40.1,
+      "project_id": 1,
+      "duration": 150,
+      "income": 100.3,
+      "work_minutes": 150.0,
+      "work_hours": 2.5
+    },
+    {
+      "rate": 40.1,
+      "project_id": 1,
+      "duration": 165,
+      "income": 110.3,
+      "work_minutes": 165.0,
+      "work_hours": 2.75
+    },
+    {
+      "rate": 40.1,
+      "project_id": 1,
+      "duration": 180,
+      "income": 120.3,
+      "work_minutes": 180.0,
+      "work_hours": 3.0
+    },
+    {
+      "rate": 40.1,
+      "project_id": 1,
+      "duration": 195,
+      "income": 130.3,
+      "work_minutes": 195.0,
+      "work_hours": 3.25
+    },
+    {
+      "rate": 40.1,
+      "project_id": 1,
+      "duration": 210,
+      "income": 140.4,
+      "work_minutes": 210.0,
+      "work_hours": 3.5
+    },
+    {
+      "rate": 40.1,
+      "project_id": 1,
+      "duration": 225,
+      "income": 150.4,
+      "work_minutes": 225.0,
+      "work_hours": 3.75
+    },
+    {
+      "rate": 40.1,
+      "project_id": 1,
+      "duration": 240,
+      "income": 160.4,
+      "work_minutes": 240.0,
+      "work_hours": 4.0
+    },
+    {
+      "rate": 40.1,
+      "project_id": 2,
+      "duration": 15,
+      "income": 20.1,
+      "work_minutes": 30.0,
+      "work_hours": 0.5
+    },
+    {
+      "rate": 40.1,
+      "project_id": 2,
+      "duration": 30,
+      "income": 40.1,
+      "work_minutes": 60.0,
+      "work_hours": 1.0
+    },
+    {
+      "rate": 40.1,
+      "project_id": 2,
+      "duration": 45,
+      "income": 60.2,
+      "work_minutes": 90.0,
+      "work_hours": 1.5
+    },
+    {
+      "rate": 40.1,
+      "project_id": 2,
+      "duration": 60,
+      "income": 80.2,
+      "work_minutes": 120.0,
+      "work_hours": 2.0
+    },
+    {
+      "rate": 40.1,
+      "project_id": 2,
+      "duration": 75,
+      "income": 100.3,
+      "work_minutes": 150.0,
+      "work_hours": 2.5
+    },
+    {
+      "rate": 40.1,
+      "project_id": 2,
+      "duration": 90,
+      "income": 120.3,
+      "work_minutes": 180.0,
+      "work_hours": 3.0
+    },
+    {
+      "rate": 40.1,
+      "project_id": 2,
+      "duration": 105,
+      "income": 140.4,
+      "work_minutes": 210.0,
+      "work_hours": 3.5
+    },
+    {
+      "rate": 40.1,
+      "project_id": 2,
+      "duration": 120,
+      "income": 160.4,
+      "work_minutes": 240.0,
+      "work_hours": 4.0
+    },
+    {
+      "rate": 40.1,
+      "project_id": 2,
+      "duration": 135,
+      "income": 180.5,
+      "work_minutes": 270.0,
+      "work_hours": 4.5
+    },
+    {
+      "rate": 40.1,
+      "project_id": 2,
+      "duration": 150,
+      "income": 200.5,
+      "work_minutes": 300.0,
+      "work_hours": 5.0
+    },
+    {
+      "rate": 40.1,
+      "project_id": 2,
+      "duration": 165,
+      "income": 220.6,
+      "work_minutes": 330.0,
+      "work_hours": 5.5
+    },
+    {
+      "rate": 40.1,
+      "project_id": 2,
+      "duration": 180,
+      "income": 240.6,
+      "work_minutes": 360.0,
+      "work_hours": 6.0
+    },
+    {
+      "rate": 40.1,
+      "project_id": 2,
+      "duration": 195,
+      "income": 260.7,
+      "work_minutes": 390.0,
+      "work_hours": 6.5
+    },
+    {
+      "rate": 40.1,
+      "project_id": 2,
+      "duration": 210,
+      "income": 280.7,
+      "work_minutes": 420.0,
+      "work_hours": 7.0
+    },
+    {
+      "rate": 40.1,
+      "project_id": 2,
+      "duration": 225,
+      "income": 300.8,
+      "work_minutes": 450.0,
+      "work_hours": 7.5
+    },
+    {
+      "rate": 40.1,
+      "project_id": 2,
+      "duration": 240,
+      "income": 320.8,
+      "work_minutes": 480.0,
+      "work_hours": 8.0
+    },
+    {
+      "rate": 40.1,
+      "project_id": 3,
+      "duration": 90,
+      "income": 90.2,
+      "work_minutes": 135.0,
+      "work_hours": 2.25
+    },
+    {
+      "rate": 40.1,
+      "project_id": 3,
+      "duration": 105,
+      "income": 105.3,
+      "work_minutes": 157.5,
+      "work_hours": 2.625
+    },
+    {
+      "rate": 40.1,
+      "project_id": 3,
+      "duration": 120,
+      "income": 120.3,
+      "work_minutes": 180.0,
+      "work_hours": 3.0
+    },
+    {
+      "rate": 40.1,
+      "project_id": 3,
+      "duration": 135,
+      "income": 135.3,
+      "work_minutes": 202.5,
+      "work_hours": 3.375
+    },
+    {
+      "rate": 40.1,
+      "project_id": 3,
+      "duration": 150,
+      "income": 150.4,
+      "work_minutes": 225.0,
+      "work_hours": 3.75
+    },
+    {
+      "rate": 40.1,
+      "project_id": 3,
+      "duration": 165,
+      "income": 165.4,
+      "work_minutes": 247.5,
+      "work_hours": 4.125
+    },
+    {
+      "rate": 40.1,
+      "project_id": 3,
+      "duration": 180,
+      "income": 180.5,
+      "work_minutes": 270.0,
+      "work_hours": 4.5
+    },
+    {
+      "rate": 40.1,
+      "project_id": 3,
+      "duration": 195,
+      "income": 195.5,
+      "work_minutes": 292.5,
+      "work_hours": 4.875
+    },
+    {
+      "rate": 40.1,
+      "project_id": 3,
+      "duration": 210,
+      "income": 210.5,
+      "work_minutes": 315.0,
+      "work_hours": 5.25
+    },
+    {
+      "rate": 40.1,
+      "project_id": 3,
+      "duration": 225,
+      "income": 225.6,
+      "work_minutes": 337.5,
+      "work_hours": 5.625
+    },
+    {
+      "rate": 40.1,
+      "project_id": 3,
+      "duration": 240,
+      "income": 240.6,
+      "work_minutes": 360.0,
+      "work_hours": 6.0
+    },
+    {
+      "rate": 40.1,
+      "project_id": 5,
+      "duration": 30,
+      "income": 20.1,
+      "work_minutes": 30.0,
+      "work_hours": 0.5
+    },
+    {
+      "rate": 40.1,
+      "project_id": 6,
+      "duration": 30,
+      "income": 20.1,
+      "work_minutes": 30.0,
+      "work_hours": 0.5
+    },
+    {
+      "rate": 40.1,
+      "project_id": 7,
+      "duration": null,
+      "income": 3.0,
+      "work_minutes": 0.0,
+      "work_hours": 0.0
+    },
+    {
+      "rate": 40.1,
+      "project_id": 8,
+      "duration": null,
+      "income": 2.0,
+      "work_minutes": 0.0,
+      "work_hours": 0.0
+    },
+    {
+      "rate": 42.42,
+      "project_id": 1,
+      "duration": 15,
+      "income": 10.6,
+      "work_minutes": 15.0,
+      "work_hours": 0.25
+    },
+    {
+      "rate": 42.42,
+      "project_id": 1,
+      "duration": 30,
+      "income": 21.2,
+      "work_minutes": 30.0,
+      "work_hours": 0.5
+    },
+    {
+      "rate": 42.42,
+      "project_id": 1,
+      "duration": 45,
+      "income": 31.8,
+      "work_minutes": 45.0,
+      "work_hours": 0.75
+    },
+    {
+      "rate": 42.42,
+      "project_id": 1,
+      "duration": 60,
+      "income": 42.4,
+      "work_minutes": 60.0,
+      "work_hours": 1.0
+    },
+    {
+      "rate": 42.42,
+      "project_id": 1,
+      "duration": 75,
+      "income": 53.0,
+      "work_minutes": 75.0,
+      "work_hours": 1.25
+    },
+    {
+      "rate": 42.42,
+      "project_id": 1,
+      "duration": 90,
+      "income": 63.6,
+      "work_minutes": 90.0,
+      "work_hours": 1.5
+    },
+    {
+      "rate": 42.42,
+      "project_id": 1,
+      "duration": 105,
+      "income": 74.2,
+      "work_minutes": 105.0,
+      "work_hours": 1.75
+    },
+    {
+      "rate": 42.42,
+      "project_id": 1,
+      "duration": 120,
+      "income": 84.8,
+      "work_minutes": 120.0,
+      "work_hours": 2.0
+    },
+    {
+      "rate": 42.42,
+      "project_id": 1,
+      "duration": 135,
+      "income": 95.4,
+      "work_minutes": 135.0,
+      "work_hours": 2.25
+    },
+    {
+      "rate": 42.42,
+      "project_id": 1,
+      "duration": 150,
+      "income": 106.1,
+      "work_minutes": 150.0,
+      "work_hours": 2.5
+    },
+    {
+      "rate": 42.42,
+      "project_id": 1,
+      "duration": 165,
+      "income": 116.7,
+      "work_minutes": 165.0,
+      "work_hours": 2.75
+    },
+    {
+      "rate": 42.42,
+      "project_id": 1,
+      "duration": 180,
+      "income": 127.3,
+      "work_minutes": 180.0,
+      "work_hours": 3.0
+    },
+    {
+      "rate": 42.42,
+      "project_id": 1,
+      "duration": 195,
+      "income": 137.9,
+      "work_minutes": 195.0,
+      "work_hours": 3.25
+    },
+    {
+      "rate": 42.42,
+      "project_id": 1,
+      "duration": 210,
+      "income": 148.5,
+      "work_minutes": 210.0,
+      "work_hours": 3.5
+    },
+    {
+      "rate": 42.42,
+      "project_id": 1,
+      "duration": 225,
+      "income": 159.1,
+      "work_minutes": 225.0,
+      "work_hours": 3.75
+    },
+    {
+      "rate": 42.42,
+      "project_id": 1,
+      "duration": 240,
+      "income": 169.7,
+      "work_minutes": 240.0,
+      "work_hours": 4.0
+    },
+    {
+      "rate": 42.42,
+      "project_id": 2,
+      "duration": 15,
+      "income": 21.2,
+      "work_minutes": 30.0,
+      "work_hours": 0.5
+    },
+    {
+      "rate": 42.42,
+      "project_id": 2,
+      "duration": 30,
+      "income": 42.4,
+      "work_minutes": 60.0,
+      "work_hours": 1.0
+    },
+    {
+      "rate": 42.42,
+      "project_id": 2,
+      "duration": 45,
+      "income": 63.6,
+      "work_minutes": 90.0,
+      "work_hours": 1.5
+    },
+    {
+      "rate": 42.42,
+      "project_id": 2,
+      "duration": 60,
+      "income": 84.8,
+      "work_minutes": 120.0,
+      "work_hours": 2.0
+    },
+    {
+      "rate": 42.42,
+      "project_id": 2,
+      "duration": 75,
+      "income": 106.1,
+      "work_minutes": 150.0,
+      "work_hours": 2.5
+    },
+    {
+      "rate": 42.42,
+      "project_id": 2,
+      "duration": 90,
+      "income": 127.3,
+      "work_minutes": 180.0,
+      "work_hours": 3.0
+    },
+    {
+      "rate": 42.42,
+      "project_id": 2,
+      "duration": 105,
+      "income": 148.5,
+      "work_minutes": 210.0,
+      "work_hours": 3.5
+    },
+    {
+      "rate": 42.42,
+      "project_id": 2,
+      "duration": 120,
+      "income": 169.7,
+      "work_minutes": 240.0,
+      "work_hours": 4.0
+    },
+    {
+      "rate": 42.42,
+      "project_id": 2,
+      "duration": 135,
+      "income": 190.9,
+      "work_minutes": 270.0,
+      "work_hours": 4.5
+    },
+    {
+      "rate": 42.42,
+      "project_id": 2,
+      "duration": 150,
+      "income": 212.1,
+      "work_minutes": 300.0,
+      "work_hours": 5.0
+    },
+    {
+      "rate": 42.42,
+      "project_id": 2,
+      "duration": 165,
+      "income": 233.3,
+      "work_minutes": 330.0,
+      "work_hours": 5.5
+    },
+    {
+      "rate": 42.42,
+      "project_id": 2,
+      "duration": 180,
+      "income": 254.5,
+      "work_minutes": 360.0,
+      "work_hours": 6.0
+    },
+    {
+      "rate": 42.42,
+      "project_id": 2,
+      "duration": 195,
+      "income": 275.7,
+      "work_minutes": 390.0,
+      "work_hours": 6.5
+    },
+    {
+      "rate": 42.42,
+      "project_id": 2,
+      "duration": 210,
+      "income": 296.9,
+      "work_minutes": 420.0,
+      "work_hours": 7.0
+    },
+    {
+      "rate": 42.42,
+      "project_id": 2,
+      "duration": 225,
+      "income": 318.2,
+      "work_minutes": 450.0,
+      "work_hours": 7.5
+    },
+    {
+      "rate": 42.42,
+      "project_id": 2,
+      "duration": 240,
+      "income": 339.4,
+      "work_minutes": 480.0,
+      "work_hours": 8.0
+    },
+    {
+      "rate": 42.42,
+      "project_id": 3,
+      "duration": 90,
+      "income": 95.4,
+      "work_minutes": 135.0,
+      "work_hours": 2.25
+    },
+    {
+      "rate": 42.42,
+      "project_id": 3,
+      "duration": 105,
+      "income": 111.4,
+      "work_minutes": 157.5,
+      "work_hours": 2.625
+    },
+    {
+      "rate": 42.42,
+      "project_id": 3,
+      "duration": 120,
+      "income": 127.3,
+      "work_minutes": 180.0,
+      "work_hours": 3.0
+    },
+    {
+      "rate": 42.42,
+      "project_id": 3,
+      "duration": 135,
+      "income": 143.2,
+      "work_minutes": 202.5,
+      "work_hours": 3.375
+    },
+    {
+      "rate": 42.42,
+      "project_id": 3,
+      "duration": 150,
+      "income": 159.1,
+      "work_minutes": 225.0,
+      "work_hours": 3.75
+    },
+    {
+      "rate": 42.42,
+      "project_id": 3,
+      "duration": 165,
+      "income": 175.0,
+      "work_minutes": 247.5,
+      "work_hours": 4.125
+    },
+    {
+      "rate": 42.42,
+      "project_id": 3,
+      "duration": 180,
+      "income": 190.9,
+      "work_minutes": 270.0,
+      "work_hours": 4.5
+    },
+    {
+      "rate": 42.42,
+      "project_id": 3,
+      "duration": 195,
+      "income": 206.8,
+      "work_minutes": 292.5,
+      "work_hours": 4.875
+    },
+    {
+      "rate": 42.42,
+      "project_id": 3,
+      "duration": 210,
+      "income": 222.7,
+      "work_minutes": 315.0,
+      "work_hours": 5.25
+    },
+    {
+      "rate": 42.42,
+      "project_id": 3,
+      "duration": 225,
+      "income": 238.6,
+      "work_minutes": 337.5,
+      "work_hours": 5.625
+    },
+    {
+      "rate": 42.42,
+      "project_id": 3,
+      "duration": 240,
+      "income": 254.5,
+      "work_minutes": 360.0,
+      "work_hours": 6.0
+    },
+    {
+      "rate": 42.42,
+      "project_id": 5,
+      "duration": 30,
+      "income": 21.2,
+      "work_minutes": 30.0,
+      "work_hours": 0.5
+    },
+    {
+      "rate": 42.42,
+      "project_id": 6,
+      "duration": 30,
+      "income": 21.2,
+      "work_minutes": 30.0,
+      "work_hours": 0.5
+    },
+    {
+      "rate": 42.42,
+      "project_id": 7,
+      "duration": null,
+      "income": 3.0,
+      "work_minutes": 0.0,
+      "work_hours": 0.0
+    },
+    {
+      "rate": 42.42,
+      "project_id": 8,
+      "duration": null,
+      "income": 2.0,
+      "work_minutes": 0.0,
+      "work_hours": 0.0
+    },
+    {
+      "rate": 100.05,
+      "project_id": 1,
+      "duration": 15,
+      "income": 25.0,
+      "work_minutes": 15.0,
+      "work_hours": 0.25
+    },
+    {
+      "rate": 100.05,
+      "project_id": 1,
+      "duration": 30,
+      "income": 50.0,
+      "work_minutes": 30.0,
+      "work_hours": 0.5
+    },
+    {
+      "rate": 100.05,
+      "project_id": 1,
+      "duration": 45,
+      "income": 75.0,
+      "work_minutes": 45.0,
+      "work_hours": 0.75
+    },
+    {
+      "rate": 100.05,
+      "project_id": 1,
+      "duration": 60,
+      "income": 100.1,
+      "work_minutes": 60.0,
+      "work_hours": 1.0
+    },
+    {
+      "rate": 100.05,
+      "project_id": 1,
+      "duration": 75,
+      "income": 125.1,
+      "work_minutes": 75.0,
+      "work_hours": 1.25
+    },
+    {
+      "rate": 100.05,
+      "project_id": 1,
+      "duration": 90,
+      "income": 150.1,
+      "work_minutes": 90.0,
+      "work_hours": 1.5
+    },
+    {
+      "rate": 100.05,
+      "project_id": 1,
+      "duration": 105,
+      "income": 175.1,
+      "work_minutes": 105.0,
+      "work_hours": 1.75
+    },
+    {
+      "rate": 100.05,
+      "project_id": 1,
+      "duration": 120,
+      "income": 200.1,
+      "work_minutes": 120.0,
+      "work_hours": 2.0
+    },
+    {
+      "rate": 100.05,
+      "project_id": 1,
+      "duration": 135,
+      "income": 225.1,
+      "work_minutes": 135.0,
+      "work_hours": 2.25
+    },
+    {
+      "rate": 100.05,
+      "project_id": 1,
+      "duration": 150,
+      "income": 250.1,
+      "work_minutes": 150.0,
+      "work_hours": 2.5
+    },
+    {
+      "rate": 100.05,
+      "project_id": 1,
+      "duration": 165,
+      "income": 275.1,
+      "work_minutes": 165.0,
+      "work_hours": 2.75
+    },
+    {
+      "rate": 100.05,
+      "project_id": 1,
+      "duration": 180,
+      "income": 300.2,
+      "work_minutes": 180.0,
+      "work_hours": 3.0
+    },
+    {
+      "rate": 100.05,
+      "project_id": 1,
+      "duration": 195,
+      "income": 325.2,
+      "work_minutes": 195.0,
+      "work_hours": 3.25
+    },
+    {
+      "rate": 100.05,
+      "project_id": 1,
+      "duration": 210,
+      "income": 350.2,
+      "work_minutes": 210.0,
+      "work_hours": 3.5
+    },
+    {
+      "rate": 100.05,
+      "project_id": 1,
+      "duration": 225,
+      "income": 375.2,
+      "work_minutes": 225.0,
+      "work_hours": 3.75
+    },
+    {
+      "rate": 100.05,
+      "project_id": 1,
+      "duration": 240,
+      "income": 400.2,
+      "work_minutes": 240.0,
+      "work_hours": 4.0
+    },
+    {
+      "rate": 100.05,
+      "project_id": 2,
+      "duration": 15,
+      "income": 50.0,
+      "work_minutes": 30.0,
+      "work_hours": 0.5
+    },
+    {
+      "rate": 100.05,
+      "project_id": 2,
+      "duration": 30,
+      "income": 100.1,
+      "work_minutes": 60.0,
+      "work_hours": 1.0
+    },
+    {
+      "rate": 100.05,
+      "project_id": 2,
+      "duration": 45,
+      "income": 150.1,
+      "work_minutes": 90.0,
+      "work_hours": 1.5
+    },
+    {
+      "rate": 100.05,
+      "project_id": 2,
+      "duration": 60,
+      "income": 200.1,
+      "work_minutes": 120.0,
+      "work_hours": 2.0
+    },
+    {
+      "rate": 100.05,
+      "project_id": 2,
+      "duration": 75,
+      "income": 250.1,
+      "work_minutes": 150.0,
+      "work_hours": 2.5
+    },
+    {
+      "rate": 100.05,
+      "project_id": 2,
+      "duration": 90,
+      "income": 300.2,
+      "work_minutes": 180.0,
+      "work_hours": 3.0
+    },
+    {
+      "rate": 100.05,
+      "project_id": 2,
+      "duration": 105,
+      "income": 350.2,
+      "work_minutes": 210.0,
+      "work_hours": 3.5
+    },
+    {
+      "rate": 100.05,
+      "project_id": 2,
+      "duration": 120,
+      "income": 400.2,
+      "work_minutes": 240.0,
+      "work_hours": 4.0
+    },
+    {
+      "rate": 100.05,
+      "project_id": 2,
+      "duration": 135,
+      "income": 450.2,
+      "work_minutes": 270.0,
+      "work_hours": 4.5
+    },
+    {
+      "rate": 100.05,
+      "project_id": 2,
+      "duration": 150,
+      "income": 500.3,
+      "work_minutes": 300.0,
+      "work_hours": 5.0
+    },
+    {
+      "rate": 100.05,
+      "project_id": 2,
+      "duration": 165,
+      "income": 550.3,
+      "work_minutes": 330.0,
+      "work_hours": 5.5
+    },
+    {
+      "rate": 100.05,
+      "project_id": 2,
+      "duration": 180,
+      "income": 600.3,
+      "work_minutes": 360.0,
+      "work_hours": 6.0
+    },
+    {
+      "rate": 100.05,
+      "project_id": 2,
+      "duration": 195,
+      "income": 650.3,
+      "work_minutes": 390.0,
+      "work_hours": 6.5
+    },
+    {
+      "rate": 100.05,
+      "project_id": 2,
+      "duration": 210,
+      "income": 700.4,
+      "work_minutes": 420.0,
+      "work_hours": 7.0
+    },
+    {
+      "rate": 100.05,
+      "project_id": 2,
+      "duration": 225,
+      "income": 750.4,
+      "work_minutes": 450.0,
+      "work_hours": 7.5
+    },
+    {
+      "rate": 100.05,
+      "project_id": 2,
+      "duration": 240,
+      "income": 800.4,
+      "work_minutes": 480.0,
+      "work_hours": 8.0
+    },
+    {
+      "rate": 100.05,
+      "project_id": 3,
+      "duration": 90,
+      "income": 225.1,
+      "work_minutes": 135.0,
+      "work_hours": 2.25
+    },
+    {
+      "rate": 100.05,
+      "project_id": 3,
+      "duration": 105,
+      "income": 262.6,
+      "work_minutes": 157.5,
+      "work_hours": 2.625
+    },
+    {
+      "rate": 100.05,
+      "project_id": 3,
+      "duration": 120,
+      "income": 300.2,
+      "work_minutes": 180.0,
+      "work_hours": 3.0
+    },
+    {
+      "rate": 100.05,
+      "project_id": 3,
+      "duration": 135,
+      "income": 337.7,
+      "work_minutes": 202.5,
+      "work_hours": 3.375
+    },
+    {
+      "rate": 100.05,
+      "project_id": 3,
+      "duration": 150,
+      "income": 375.2,
+      "work_minutes": 225.0,
+      "work_hours": 3.75
+    },
+    {
+      "rate": 100.05,
+      "project_id": 3,
+      "duration": 165,
+      "income": 412.7,
+      "work_minutes": 247.5,
+      "work_hours": 4.125
+    },
+    {
+      "rate": 100.05,
+      "project_id": 3,
+      "duration": 180,
+      "income": 450.2,
+      "work_minutes": 270.0,
+      "work_hours": 4.5
+    },
+    {
+      "rate": 100.05,
+      "project_id": 3,
+      "duration": 195,
+      "income": 487.7,
+      "work_minutes": 292.5,
+      "work_hours": 4.875
+    },
+    {
+      "rate": 100.05,
+      "project_id": 3,
+      "duration": 210,
+      "income": 525.3,
+      "work_minutes": 315.0,
+      "work_hours": 5.25
+    },
+    {
+      "rate": 100.05,
+      "project_id": 3,
+      "duration": 225,
+      "income": 562.8,
+      "work_minutes": 337.5,
+      "work_hours": 5.625
+    },
+    {
+      "rate": 100.05,
+      "project_id": 3,
+      "duration": 240,
+      "income": 600.3,
+      "work_minutes": 360.0,
+      "work_hours": 6.0
+    },
+    {
+      "rate": 100.05,
+      "project_id": 5,
+      "duration": 30,
+      "income": 50.0,
+      "work_minutes": 30.0,
+      "work_hours": 0.5
+    },
+    {
+      "rate": 100.05,
+      "project_id": 6,
+      "duration": 30,
+      "income": 50.0,
+      "work_minutes": 30.0,
+      "work_hours": 0.5
+    },
+    {
+      "rate": 100.05,
+      "project_id": 7,
+      "duration": null,
+      "income": 3.0,
+      "work_minutes": 0.0,
+      "work_hours": 0.0
+    },
+    {
+      "rate": 100.05,
+      "project_id": 8,
+      "duration": null,
+      "income": 2.0,
+      "work_minutes": 0.0,
+      "work_hours": 0.0
+    }
+  ]
+}

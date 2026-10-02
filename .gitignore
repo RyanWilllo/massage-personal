@@ -1,0 +1,10 @@
+node_modules/
+dist/
+.env*
+!.env.example
+*.db
+*.db-*
+*.sqlite*
+*.private.json
+.DS_Store
+.wrangler/

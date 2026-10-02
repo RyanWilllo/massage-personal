@@ -1,0 +1,11 @@
+# 托管与验证
+
+托管：GitHub Pages。仓库为独立 `massage-personal`，默认 main；项目构建 base 为 `/massage-personal/`。当前连接缺少 workflow 权限，使用本地 npm ci → 自动测试 → Vite 构建 → 离线制品验证，再将纯静态制品推送到 gh-pages 分支发布。GitHub 自身执行 Pages 部署；个人版源码不会启动自定义工作流。原自动构建配置保留为 tools/pages-workflow.reference.yml，未来授权相应权限后可另行启用。
+
+网站只部署程序和初始公共计薪规则，不包含个人历史记录、数据库、凭证、测试产物或私密迁移数据。
+
+离线 Service Worker 在 install 时完整缓存入口、全部路由动态模块、样式、图标和 manifest；安装失败删除新版本部分缓存，保留已工作的旧版本。更新准备完毕后由设置中的用户操作触发激活，避免编辑时自动重载。activate 仅清理本应用的旧程序缓存，不删 IndexedDB。
+
+GitHub Pages 公网验证包括 HTTPS、首页和 manifest、图标、sw.js、所有构建资源、哈希和缓存路径核对。成功 URL 和实际发布状态见部署记录，不以预测地址代替发布成功。
+
+自动测试使用 fake-indexeddb 验证业务事务和重开持久化，模拟 Service Worker 验证离线资源与更新生命周期。这不等于 Safari/iPhone 实机测试。尚需用户明确要求并完成：主屏幕安装、飞行模式录入、杀掉重开、键盘与安全区、真实设备存储和更新。

@@ -1,0 +1,220 @@
+/* ═══════════════════════════════════════════════════════════════
+   设计令牌（Design Tokens） — 科技蓝 / 冷白浅灰蓝 / 琥珀橙
+   主题色集中在此，全局与 Vant 变量统一映射，改主题只改这一处。
+   ═══════════════════════════════════════════════════════════════ */
+:root {
+  /* 色彩 */
+  --c-primary:        #2563eb;   /* 科技蓝：主操作 / 选中 / 导航强调 */
+  --c-primary-deep:   #1d4ed8;   /* 按压态 / 渐变深端 */
+  --c-primary-soft:   #dbeafe;   /* 选中底色 / 标签底 */
+  --c-primary-tint:   #eff6ff;   /* 极浅提亮底 */
+  --c-primary-border: #bfdbfe;   /* 主色浅描边 */
+  --c-primary-glow:   rgba(37,99,235,.16); /* 品牌光晕 */
+  --c-focus-ring:     rgba(37,99,235,.42); /* 键盘焦点环 */
+  --c-income:         #d97706;   /* 琥珀橙：收入数字 / 金额强调（对比色） */
+  --c-income-text:    #a65300;   /* 小字号金额：保证浅色背景上的可读性 */
+  --c-income-soft:    #fef3c7;   /* 收入卡底色 */
+  --c-bonus:          #dc2626;   /* 红：点钟奖励专属 */
+  --c-danger:         #dc2626;   /* 删除 / 取消 / 危险 */
+  --c-warning:        #a65300;   /* 进行中 / 提醒（白字背景需满足对比度） */
+  --c-warning-text:   #7c4a03;   /* 小字号警示文字 */
+  --c-warning-soft:   #fff7dc;   /* 警示提示底色 */
+  --c-success:        #15803d;   /* 已完成 / 成功 */
+  --c-on-primary:     #ffffff;   /* 主色与深色遮罩上的文字 / 图标 */
+  --c-on-primary-glow: rgba(255,255,255,.16); /* 深色主视觉上的高光 */
+  --c-canvas:         #eef2f7;   /* 宽屏工作区外侧底色 */
+  --c-bg:             #f5f7fa;   /* 页面底色（冷白浅灰蓝） */
+  --c-card:           #ffffff;   /* 卡片 */
+  --c-surface-muted:  #f1f5f9;   /* 禁用 / 弱化表面 */
+  --c-overlay:        rgba(15,23,42,.72); /* 提交遮罩 */
+  --c-text:           #1e293b;   /* 主文字（冷深蓝灰） */
+  --c-text-2:         #475569;   /* 次级文字（冷灰蓝） */
+  --c-text-3:         #5f6f85;   /* 弱文字 / 占位（小字号仍满足浅底可读性） */
+  --c-border:         #e2e8f0;   /* 分割线 / 描边（冷） */
+
+  /* 圆角 / 阴影 */
+  --r-card:   16px;
+  --r-inner:  10px;
+  --r-dialog: 18px;
+  --r-page:   22px;
+  --r-pill:   999px;
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --text-xs: 11px;
+  --text-sm: 12px;
+  --text-body: 14px;
+  --text-subtitle: 16px;
+  --text-title: 24px;
+  --app-content-max-width: 760px;
+  --shadow-card: 0 1px 2px rgba(0,0,0,.03), 0 4px 16px rgba(0,0,0,.05);
+  --shadow-float: 0 6px 24px rgba(0,0,0,.10);
+  --shadow-hero: 0 8px 24px rgba(37,99,235,.30);
+  --shadow-text: 0 1px 8px rgba(0,0,0,.18);
+
+  /* Vant 组件主题映射 */
+  --van-primary-color: var(--c-primary);
+  --van-success-color: var(--c-success);
+  --van-warning-color: var(--c-warning);
+  --van-danger-color: var(--c-danger);
+  --van-text-color: var(--c-text);
+  --van-text-color-2: var(--c-text-2);
+  --van-text-color-3: var(--c-text-3);
+  --van-border-color: var(--c-border);
+  --van-background: var(--c-bg);
+  --van-background-2: var(--c-card);
+  --van-cell-background: var(--c-card);
+  --van-cell-vertical-padding: 13px;
+  --van-cell-horizontal-padding: 16px;
+  --van-nav-bar-background: var(--c-card);
+  --van-nav-bar-title-text-color: var(--c-text);
+  --van-nav-bar-icon-color: var(--c-text-2);
+  --van-nav-bar-height: 46px;
+  --van-tabbar-background: var(--c-card);
+  --van-tabbar-item-active-color: var(--c-primary);
+  --van-tabbar-item-text-color: var(--c-text-3);
+  --van-button-primary-background: var(--c-primary);
+  --van-button-primary-border-color: var(--c-primary);
+  --van-button-default-color: var(--c-text);
+  --van-button-radius: var(--r-pill);
+  --van-switch-on-background: var(--c-primary);
+  --van-progress-background: var(--c-primary-tint);
+  --van-action-sheet-max-height: 85%;
+  --van-dialog-radius: var(--r-dialog);
+  --van-field-placeholder-text-color: var(--c-text-3);
+  --van-tabs-bottom-bar-color: var(--c-primary);
+  --van-tabs-bottom-bar-height: 3px;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+html { -webkit-text-size-adjust: 100%; background: var(--c-canvas); }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+  background: var(--c-bg);
+  color: var(--c-text);
+  padding-bottom: env(safe-area-inset-bottom);
+  overscroll-behavior-y: none;
+}
+
+/* 数字统一用等宽数字，避免金额 / 工时跳动错位 */
+.stat-value,
+.hero-value, .picker-summary, .edit-preview {
+  font-variant-numeric: tabular-nums;
+}
+
+.page { padding: var(--space-3) var(--space-3) calc(var(--space-4) + env(safe-area-inset-bottom)); }
+button, [role="button"] { font: inherit; }
+button:focus-visible, [role="button"]:focus-visible, .van-cell:focus-visible, .van-button:focus-visible {
+  outline: 3px solid var(--c-focus-ring);
+  outline-offset: 2px;
+}
+
+.card {
+  background: var(--c-card);
+  border: 1px solid var(--c-border);
+  border-radius: var(--r-card);
+  padding: 16px;
+  margin-bottom: 12px;
+  box-shadow: var(--shadow-card);
+}
+
+.form-error {
+  margin: var(--space-2) var(--space-1) 0;
+  color: var(--c-danger);
+  font-size: var(--text-sm);
+  line-height: 1.5;
+}
+
+.form-help {
+  margin: var(--space-2) var(--space-1) 0;
+  color: var(--c-text-3);
+  font-size: var(--text-sm);
+  line-height: 1.55;
+}
+
+.form-actions { margin-top: var(--space-5); }
+
+.dialog-copy {
+  padding: var(--space-1) var(--space-6) var(--space-5);
+  color: var(--c-text-2);
+  font-size: var(--text-body);
+  line-height: 1.6;
+}
+
+/* 金额主色 → 琥珀橙（冷底上的暖色强调，对比色） */
+.stat-value { font-size: 28px; font-weight: 700; color: var(--c-income); line-height: 1.15; }
+.stat-value.blue { color: var(--c-primary); }
+.stat-value.green { color: var(--c-success); }
+/* 分区标题：科技蓝左侧竖条 */
+.section-title {
+  font-size: 14px; font-weight: 600; color: var(--c-text-2);
+  margin: 16px 0 8px; padding-left: 8px;
+  border-left: 3px solid var(--c-primary);
+  line-height: 1.2;
+}
+
+/* ═══ 首页主卡（科技蓝渐变 + 琥珀橙收入） ═══ */
+.hero-card {
+  background: linear-gradient(135deg, var(--c-primary) 0%, var(--c-primary-deep) 100%);
+  color: var(--c-on-primary);
+  border-radius: var(--r-card);
+  padding: 24px 16px 20px;
+  text-align: center;
+  box-shadow: var(--shadow-hero);
+  margin-bottom: 12px;
+  position: relative;
+  overflow: hidden;
+}
+/* 顶部柔和光晕，提升层次 */
+.hero-card::before {
+  content: '';
+  position: absolute; top: -40%; left: -10%; width: 120%; height: 90%;
+  background: radial-gradient(closest-side, var(--c-on-primary-glow), transparent);
+  pointer-events: none;
+}
+.hero-card .hero-label { color: var(--c-on-primary); font-size: 14px; margin-bottom: 6px; letter-spacing: .5px; }
+.hero-card .hero-value { font-size: 46px; font-weight: 700; color: var(--c-on-primary); line-height: 1.2; text-shadow: var(--shadow-text); }
+/* ═══ 快速统计卡（图标 + 数值） ═══ */
+.quick-stat {
+  flex: 1; text-align: center; padding: 16px 8px;
+  background: var(--c-card); border: 1px solid var(--c-border);
+  border-radius: var(--r-card); box-shadow: var(--shadow-card);
+}
+.quick-stat .stat-value { font-size: 28px; }
+.quick-stat small { font-size: 14px; color: var(--c-text-3); font-weight: 600; }
+
+/* ═══ 触控 / 移动端适配 ═══ */
+.van-button { min-height: 44px; }
+.van-cell { padding-top: 13px; padding-bottom: 13px; }
+.van-action-sheet, .van-popup { padding-bottom: env(safe-area-inset-bottom); }
+.van-action-sheet__header { font-size: 16px; font-weight: 600; }
+.van-nav-bar { border-bottom: 1px solid var(--c-border); }
+/* 统一按压反馈 */
+.van-cell:active { opacity: .82; }
+
+/* ═══ 个人设置页 ═══ */
+.admin-section { margin: 0 0 var(--space-4); }
+.admin-section-heading { display: flex; align-items: baseline; justify-content: space-between; gap: var(--space-2); margin: 0 4px 8px; }
+.admin-section-heading h2 { color: var(--c-text-2); font-size: 14px; line-height: 1.3; }
+.admin-section-heading span { color: var(--c-text-3); font-size: 11px; }
+.admin-form-card { overflow: hidden; padding: var(--space-3); border: 1px solid var(--c-border); border-radius: var(--r-card); background: var(--c-card); box-shadow: var(--shadow-card); }
+.admin-form-card .van-cell-group { margin: 0; }
+.admin-form-card .van-cell { background: transparent; }
+.admin-action-note { margin: 0 4px 12px; padding: 10px 12px; border-radius: var(--r-inner); color: var(--c-text-2); background: var(--c-primary-tint); font-size: 12px; line-height: 1.6; }
+
+/* 大屏保持移动端信息密度，只增加留白和可读性，不扩散成桌面管理台。 */
+@media (min-width: 768px) {
+  .page { padding: var(--space-5) 24px calc(28px + env(safe-area-inset-bottom)); }
+  .card { margin-bottom: var(--space-4); }
+  .hero-card { padding: 28px 24px 24px; }
+  .van-tabbar {
+    left: 50%;
+    width: min(100%, var(--app-content-max-width));
+    transform: translateX(-50%);
+    border-left: 1px solid var(--c-border);
+    border-right: 1px solid var(--c-border);
+  }
+}
