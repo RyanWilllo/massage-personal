@@ -55,7 +55,7 @@ export const updateIncomeRule = (id, data) => transaction(state => {
 })
 export async function getSystemInfo() {
   const state = await readState()
-  return { version: '1.0.0', schema_version: DATABASE_VERSION,
+  return { version: '1.1.0', schema_version: DATABASE_VERSION,
     project_count: state.projects.length, record_count: state.services.length,
     first_date: state.services.map(s => s.service_date).sort()[0] ?? '—' }
 }
