@@ -1,0 +1,64 @@
+/* Local SVG masks retain Vant's icon API, sizing, colors and click targets.
+   Vite embeds these small assets in CSS, which the Service Worker precaches. */
+.van-icon {
+  position: relative;
+  display: inline-block;
+  font-size: inherit;
+  font-style: normal;
+  line-height: 1;
+  vertical-align: middle;
+  --personal-icon: linear-gradient(transparent, transparent);
+}
+.van-icon::before {
+  content: "";
+  display: block;
+  width: 1em;
+  height: 1em;
+  background-color: currentColor;
+  -webkit-mask: var(--personal-icon) center / contain no-repeat;
+  mask: var(--personal-icon) center / contain no-repeat;
+}
+.van-icon:not([class*="van-icon-"])::before { display: none; }
+.van-icon__image { display: block; width: 1em; height: 1em; object-fit: contain; }
+
+.van-icon-home-o { --personal-icon: url("../assets/icons/home-o.svg"); }
+
+.van-icon-chart-trending-o { --personal-icon: url("../assets/icons/chart-trending-o.svg"); }
+
+.van-icon-setting-o { --personal-icon: url("../assets/icons/setting-o.svg"); }
+
+.van-icon-balance-list-o { --personal-icon: url("../assets/icons/balance-list-o.svg"); }
+
+.van-icon-apps-o { --personal-icon: url("../assets/icons/apps-o.svg"); }
+
+.van-icon-delete-o { --personal-icon: url("../assets/icons/delete-o.svg"); }
+
+.van-icon-notes-o { --personal-icon: url("../assets/icons/notes-o.svg"); }
+
+.van-icon-edit { --personal-icon: url("../assets/icons/edit.svg"); }
+
+.van-icon-plus { --personal-icon: url("../assets/icons/plus.svg"); }
+
+.van-icon-warning-o { --personal-icon: url("../assets/icons/warning-o.svg"); }
+
+.van-icon-search { --personal-icon: url("../assets/icons/search.svg"); }
+
+.van-icon-arrow-down { --personal-icon: url("../assets/icons/arrow-down.svg"); }
+
+.van-icon-arrow-up { --personal-icon: url("../assets/icons/arrow-up.svg"); }
+
+.van-icon-checked { --personal-icon: url("../assets/icons/checked.svg"); }
+
+.van-icon-circle { --personal-icon: url("../assets/icons/circle.svg"); }
+
+.van-icon-arrow-left { --personal-icon: url("../assets/icons/arrow-left.svg"); }
+
+.van-icon-arrow { --personal-icon: url("../assets/icons/arrow.svg"); }
+
+.van-icon-cross { --personal-icon: url("../assets/icons/cross.svg"); }
+
+.van-icon-success { --personal-icon: url("../assets/icons/success.svg"); }
+
+.van-icon-fail { --personal-icon: url("../assets/icons/fail.svg"); }
+
+.van-icon-clear { --personal-icon: url("../assets/icons/clear.svg"); }

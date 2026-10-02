@@ -2,6 +2,7 @@ import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import { createHash } from 'node:crypto'
 import { readFileSync } from 'node:fs'
+import { vantSvgIcons } from './tools/vant-svg-icons.mjs'
 
 const base = process.env.PUBLIC_BASE || '/'
 if (!base.startsWith('/') || !base.endsWith('/')) throw new Error('PUBLIC_BASE must start and end with /')
@@ -52,4 +53,4 @@ self.addEventListener('fetch', event => {
     },
   }
 }
-export default defineConfig({ base, plugins: [vue(), offlineAssets()], server: { port: 5174 }, build: { sourcemap: false } })
+export default defineConfig({ base, plugins: [vantSvgIcons(), vue(), offlineAssets()], server: { port: 5174 }, build: { sourcemap: false } })
