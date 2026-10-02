@@ -9,7 +9,6 @@
   --c-primary-soft:   #dbeafe;   /* 选中底色 / 标签底 */
   --c-primary-tint:   #eff6ff;   /* 极浅提亮底 */
   --c-primary-border: #bfdbfe;   /* 主色浅描边 */
-  --c-primary-glow:   rgba(37,99,235,.16); /* 品牌光晕 */
   --c-focus-ring:     rgba(37,99,235,.42); /* 键盘焦点环 */
   --c-income:         #d97706;   /* 琥珀橙：收入数字 / 金额强调（对比色） */
   --c-income-text:    #a65300;   /* 小字号金额：保证浅色背景上的可读性 */
@@ -21,7 +20,6 @@
   --c-warning-soft:   #fff7dc;   /* 警示提示底色 */
   --c-success:        #15803d;   /* 已完成 / 成功 */
   --c-on-primary:     #ffffff;   /* 主色与深色遮罩上的文字 / 图标 */
-  --c-on-primary-glow: rgba(255,255,255,.16); /* 深色主视觉上的高光 */
   --c-canvas:         #eef2f7;   /* 宽屏工作区外侧底色 */
   --c-bg:             #f5f7fa;   /* 页面底色（冷白浅灰蓝） */
   --c-card:           #ffffff;   /* 卡片 */
@@ -44,16 +42,14 @@
   --space-4: 16px;
   --space-5: 20px;
   --space-6: 24px;
-  --text-xs: 11px;
-  --text-sm: 12px;
-  --text-body: 14px;
+  --text-xs: 13px;
+  --text-sm: 14px;
+  --text-body: 16px;
   --text-subtitle: 16px;
   --text-title: 24px;
   --app-content-max-width: 760px;
-  --shadow-card: 0 1px 2px rgba(0,0,0,.03), 0 4px 16px rgba(0,0,0,.05);
+  --shadow-card: 0 1px 2px rgba(0,0,0,.025);
   --shadow-float: 0 6px 24px rgba(0,0,0,.10);
-  --shadow-hero: 0 8px 24px rgba(37,99,235,.30);
-  --shadow-text: 0 1px 8px rgba(0,0,0,.18);
 
   /* Vant 组件主题映射 */
   --van-primary-color: var(--c-primary);
@@ -72,7 +68,12 @@
   --van-nav-bar-background: var(--c-card);
   --van-nav-bar-title-text-color: var(--c-text);
   --van-nav-bar-icon-color: var(--c-text-2);
-  --van-nav-bar-height: 46px;
+  --van-nav-bar-height: 48px;
+  --van-cell-font-size: 16px;
+  --van-cell-label-font-size: 14px;
+  --van-field-input-text-color: var(--c-text);
+  --van-button-default-font-size: 16px;
+  --van-button-small-font-size: 14px;
   --van-tabbar-background: var(--c-card);
   --van-tabbar-item-active-color: var(--c-primary);
   --van-tabbar-item-text-color: var(--c-text-3);
@@ -95,7 +96,9 @@ body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
   background: var(--c-bg);
   color: var(--c-text);
-  padding-bottom: env(safe-area-inset-bottom);
+  padding-top: env(safe-area-inset-top);
+  font-size: var(--text-body);
+  line-height: 1.5;
   overscroll-behavior-y: none;
 }
 
@@ -156,38 +159,28 @@ button:focus-visible, [role="button"]:focus-visible, .van-cell:focus-visible, .v
   line-height: 1.2;
 }
 
-/* ═══ 首页主卡（科技蓝渐变 + 琥珀橙收入） ═══ */
+/* 首页收入：用字号建立层级，轻量白色表面。 */
 .hero-card {
-  background: linear-gradient(135deg, var(--c-primary) 0%, var(--c-primary-deep) 100%);
-  color: var(--c-on-primary);
+  background: var(--c-card);
+  border: 1px solid var(--c-border);
   border-radius: var(--r-card);
-  padding: 24px 16px 20px;
-  text-align: center;
-  box-shadow: var(--shadow-hero);
+  padding: 24px 20px;
   margin-bottom: 12px;
-  position: relative;
-  overflow: hidden;
 }
-/* 顶部柔和光晕，提升层次 */
-.hero-card::before {
-  content: '';
-  position: absolute; top: -40%; left: -10%; width: 120%; height: 90%;
-  background: radial-gradient(closest-side, var(--c-on-primary-glow), transparent);
-  pointer-events: none;
-}
-.hero-card .hero-label { color: var(--c-on-primary); font-size: 14px; margin-bottom: 6px; letter-spacing: .5px; }
-.hero-card .hero-value { font-size: 46px; font-weight: 700; color: var(--c-on-primary); line-height: 1.2; text-shadow: var(--shadow-text); }
+.hero-card .hero-label { color: var(--c-text-2); font-size: 16px; margin-bottom: 6px; }
+.hero-card .hero-value { font-size: 44px; font-weight: 700; color: var(--c-text); line-height: 1.2; overflow-wrap: anywhere; }
 /* ═══ 快速统计卡（图标 + 数值） ═══ */
 .quick-stat {
-  flex: 1; text-align: center; padding: 16px 8px;
+  flex: 1; min-width: 0; text-align: center; padding: 16px 8px;
   background: var(--c-card); border: 1px solid var(--c-border);
   border-radius: var(--r-card); box-shadow: var(--shadow-card);
 }
-.quick-stat .stat-value { font-size: 28px; }
+.quick-stat .stat-value { font-size: 28px; overflow-wrap: anywhere; }
 .quick-stat small { font-size: 14px; color: var(--c-text-3); font-weight: 600; }
 
 /* ═══ 触控 / 移动端适配 ═══ */
 .van-button { min-height: 44px; }
+.van-field__control { font-size: 16px; }
 .van-cell { padding-top: 13px; padding-bottom: 13px; }
 .van-action-sheet, .van-popup { padding-bottom: env(safe-area-inset-bottom); }
 .van-action-sheet__header { font-size: 16px; font-weight: 600; }

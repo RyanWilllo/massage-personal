@@ -48,5 +48,5 @@ onBeforeUnmount(() => window.removeEventListener('pwa-state', syncPwa))
 </script>
 <style scoped>
 .settings-note { margin: var(--space-4) 0; padding: var(--space-4); color: var(--c-text-2); font-size: var(--text-sm); line-height: 1.6; }
-.settings-note h2 { font-size: var(--text-md); color: var(--c-text); margin-bottom: var(--space-2); }
+.settings-note h2 { font-size: var(--text-subtitle); color: var(--c-text); margin-bottom: var(--space-2); }
 </style>

@@ -28,4 +28,7 @@ const goBack = () => {
 
 <style scoped>
 .page-nav-title { color: inherit; font: inherit; line-height: inherit; }
+:deep(.van-nav-bar__left) { min-width: 64px; padding-inline: 16px; }
+.van-nav-bar { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 10; margin-inline: calc(-1 * var(--space-3)); }
+@media (min-width: 768px) { .van-nav-bar { margin-inline: -24px; } }
 </style>

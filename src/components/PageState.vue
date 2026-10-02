@@ -49,13 +49,13 @@ const iconColor = computed(() => (props.type === 'error' ? 'var(--c-danger)' : '
 .page-state__title {
   margin-top: var(--space-3);
   color: var(--c-text-2);
-  font-size: 15px;
+  font-size: 16px;
   font-weight: 600;
 }
 .page-state__message {
   margin-top: 6px;
   color: var(--c-text-3);
-  font-size: 13px;
+  font-size: 14px;
   line-height: 1.5;
 }
 .page-state__action { margin-top: var(--space-4); }

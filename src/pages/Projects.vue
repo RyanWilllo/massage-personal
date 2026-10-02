@@ -1,5 +1,5 @@
 <template>
-  <SettingsPageShell title="项目管理" description="控制服务项目是否出现在录入流程中；停用不会改变历史记录。">
+  <SettingsPageShell title="服务项目" description="控制服务项目是否出现在录入流程中；停用不会改变历史记录。">
     <PageState v-if="loading" type="loading" message="加载服务项目…" />
     <PageState v-else-if="loadError" type="error" :message="loadError" action-text="重试" @action="loadProjects" />
     <PageState v-else-if="!projects.length" type="empty" title="暂无服务项目" message="当前没有可管理的服务项目。" />

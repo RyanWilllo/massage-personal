@@ -73,8 +73,8 @@ button.month-calendar__day:active { opacity: .82; }
 .month-calendar__day--future { cursor: not-allowed; background: var(--c-surface-muted); opacity: .35; }
 .month-calendar__day--blank { border-color: transparent; background: transparent; }
 .month-calendar__day--readonly { cursor: default; }
-.month-calendar__number { color: var(--c-text); font-size: 13px; font-weight: 600; }
-.month-calendar__value { margin-top: 2px; color: var(--c-income-text); font-size: 10px; font-weight: 700; }
+.month-calendar__number { color: var(--c-text); font-size: 14px; font-weight: 600; }
+.month-calendar__value { margin-top: 2px; color: var(--c-income-text); font-size: 11px; font-weight: 700; }
 @media (min-width: 768px) {
   .month-calendar { gap: 6px; }
 }

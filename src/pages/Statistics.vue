@@ -1,6 +1,6 @@
 <template>
   <main class="page stats-page">
-    <PageHeader title="数据统计" kicker="PERSONAL INSIGHTS" />
+    <PageHeader title="统计" />
 
     <van-action-sheet v-model:show="showCalMonthPicker" title="选择月份">
       <div class="month-picker-list">
@@ -29,7 +29,6 @@
       <section class="card calendar-card" aria-label="月历">
         <div class="calendar-card-head">
           <div>
-            <div class="calendar-kicker">MONTH VIEW</div>
             <h2>{{ calMonth }} 月历</h2>
           </div>
           <div class="calendar-head-actions">
@@ -171,7 +170,6 @@ onMounted(() => {
 </script>
 
 <style scoped>
-.calendar-kicker { color: var(--c-primary); font-size: 10px; font-weight: 700; letter-spacing: 1.15px; }
 .month-picker-list { display: flex; flex-wrap: wrap; gap: 8px; padding: 12px 16px max(18px, env(safe-area-inset-bottom)); }
 .month-metrics { margin-bottom: 12px; }
 .calendar-card { padding: 14px 10px 12px; }
@@ -180,7 +178,7 @@ onMounted(() => {
 .calendar-card-head h2, .detail-head h2 { color: var(--c-text); font-size: 16px; line-height: 1.25; margin-top: 3px; }
 .stats-day-detail { margin-top: 18px; }
 .detail-head { display: flex; align-items: flex-end; justify-content: space-between; gap: 12px; margin: 0 4px 8px; }
-.detail-date { color: var(--c-text-3); font-size: 11px; font-variant-numeric: tabular-nums; }
+.detail-date { color: var(--c-text-3); font-size: 14px; font-variant-numeric: tabular-nums; }
 @media (max-width: 359px) {
   .calendar-card { padding-left: 6px; padding-right: 6px; }
 }

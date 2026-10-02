@@ -1,5 +1,5 @@
 <template>
-  <SettingsPageShell title="规则管理" description="设置计薪基准、工时倍率和固定收入。">
+  <SettingsPageShell title="计薪规则" description="设置计薪基准、工时倍率和固定收入。">
     <PageState v-if="loading" type="loading" message="加载规则…" />
     <PageState v-else-if="loadError" type="error" :message="loadError" action-text="重试" @action="loadRules" />
     <template v-else>

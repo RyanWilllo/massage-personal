@@ -1,6 +1,6 @@
 <template>
   <main class="page detail-page" :aria-busy="loading">
-    <PageNavBar :title="'服务 #' + id" back-to="/" prefer-history />
+    <PageNavBar title="服务详情" back-to="/" prefer-history />
     <PageState v-if="loading" type="loading" message="加载服务详情…" />
     <PageState v-else-if="loadError" type="error" :message="loadError" action-text="重试" @action="loadDetail" />
     <div v-else class="detail-content">
@@ -189,7 +189,7 @@ const refreshDetail = async () => {
 .detail-page { padding-top: 0; }
 .detail-content { padding-top: var(--space-3); }
 .time-editor { padding:8px 16px 14px; }
-.time-editor-tip { padding:8px 0 0; color:var(--c-text-3); font-size:12px; line-height:1.5; }
+.time-editor-tip { padding:8px 0 0; color:var(--c-text-3); font-size:14px; line-height:1.5; }
 .service-item-card { display:flex; align-items:center; justify-content:space-between; gap:var(--space-3); }
 .service-item-copy { min-width:0; }
 .service-item-name, .detail-label { color:var(--c-text); font-weight:700; }
@@ -203,10 +203,12 @@ const refreshDetail = async () => {
 .remark-card { display:flex; width:100%; justify-content:space-between; align-items:center; color:var(--c-text); background:var(--c-primary-tint); text-align:left; }
 .remark-card:disabled { cursor:default; opacity:1; }
 .remark-copy { flex:1; min-width:0; }
-.remark-text { margin-top:var(--space-1); color:var(--c-text-2); font-size:13px; line-height:1.5; overflow-wrap:anywhere; }
+.remark-text { margin-top:var(--space-1); color:var(--c-text-2); font-size:16px; line-height:1.5; overflow-wrap:anywhere; }
 .remark-edit-icon { margin-left:var(--space-3); }
 .add-remark { margin-bottom:var(--space-3); }
 .remark-editor { padding:var(--space-4); }
 .total-card { display:flex; justify-content:space-between; align-items:center; background:var(--c-income-soft); }
 .danger-zone { margin-top:var(--space-5); }
+.service-item-card { flex-wrap: wrap; }
+.service-item-actions { margin-left: auto; }
 </style>

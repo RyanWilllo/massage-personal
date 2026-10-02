@@ -9,7 +9,7 @@
       @action="retry"
     />
     <template v-else>
-      <PageHeader title="今日工作台" kicker="PERSONAL WORKSPACE">
+      <PageHeader title="今日">
         <template #aside>{{ displayDate }}</template>
       </PageHeader>
 
@@ -21,28 +21,24 @@
       <section class="quick-stats" aria-label="今日概览">
         <div class="quick-stat">
           <div class="quick-stat-label">计薪工时</div>
-          <div class="stat-value blue">{{ daily.total_work_hours }}<small>h</small></div>
+          <div class="stat-value">{{ daily.total_work_hours }}<small>h</small></div>
         </div>
         <div class="quick-stat">
           <div class="quick-stat-label">服务次数</div>
-          <div class="stat-value green">{{ daily.service_count }}<small>次</small></div>
+          <div class="stat-value">{{ daily.service_count }}<small>次</small></div>
         </div>
       </section>
 
-      <section class="record-cta" aria-label="开始记录">
+      <section class="record-cta" aria-label="记录服务">
         <van-button type="primary" round block size="large" class="record-btn" @click="startRecord">
           <van-icon name="plus" />
-          <span>开始记录</span>
+          <span>记录服务</span>
         </van-button>
       </section>
 
       <section class="detail-section">
         <div class="section-heading">
-          <div>
-            <div class="section-kicker">TODAY'S ACTIVITY</div>
-            <h2>当日服务详情</h2>
-          </div>
-          <span class="section-date">{{ displayDate }}</span>
+          <h2>今日记录</h2>
         </div>
         <DailyServiceList :date="todayStr" :prefetched="prefetchedServices" />
       </section>
@@ -118,24 +114,17 @@ const startRecord = () => recordFlow.value?.open(localDate())
 
 <style scoped>
 .dashboard-page { padding-top: 16px; }
-.section-kicker {
-  color: var(--c-primary); font-size: 10px; font-weight: 700;
-  letter-spacing: 1.2px; line-height: 1.2;
-}
-.section-date {
-  color: var(--c-text-3); font-size: 12px; font-variant-numeric: tabular-nums;
-}
 .hero-card { margin-bottom: 12px; }
 .quick-stats { display:flex; gap:12px; margin-bottom:16px; }
 .quick-stat { text-align: left; padding: 14px 14px 12px; }
-.quick-stat-label { color: var(--c-text-2); font-size: 12px; font-weight: 600; }
-.quick-stat .stat-value { margin-top: 6px; }
+.quick-stat-label { color: var(--c-text-2); font-size: 14px; }
+.quick-stat .stat-value { margin-top: 6px; color: var(--c-text); }
 .record-cta { margin-bottom: 24px; }
-.record-btn { box-shadow: var(--shadow-hero); font-weight: 700; letter-spacing: .2px; }
+.record-btn { font-weight: 600; }
 .record-btn .van-icon { margin-right: 6px; font-size: 17px; vertical-align: -2px; }
 .detail-section { margin-top: 4px; }
 .section-heading {
-  display: flex; justify-content: space-between; align-items: flex-end;
+  display: flex; justify-content: space-between; align-items: center;
   margin: 0 4px 8px;
 }
 .section-heading h2 { color: var(--c-text); font-size: 17px; line-height: 1.25; margin-top: 4px; }

@@ -1,5 +1,5 @@
 <template>
-  <div class="app-container">
+  <div class="app-container" :class="{ 'app-container--with-tabs': showTabbar }">
     <router-view v-slot="{ Component }">
       <transition name="fade" mode="out-in">
         <component :is="Component" :key="pageKey" />
@@ -46,9 +46,9 @@ const go = (path) => {
   width: min(100%, var(--app-content-max-width));
   min-height: 100vh;
   margin: 0 auto;
-  padding-bottom: calc(50px + env(safe-area-inset-bottom));
   background: var(--c-bg);
 }
+.app-container--with-tabs { padding-bottom: calc(50px + env(safe-area-inset-bottom)); }
 @media (min-width: 768px) {
   .app-container {
     min-height: calc(100vh - 32px);

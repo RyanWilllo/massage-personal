@@ -7,7 +7,7 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "test": "node --test tests/domain.test.js tests/storage.test.js",
+    "test": "node --test tests/domain.test.js tests/storage.test.js tests/record-flow.test.js",
     "verify:build": "node --test tests/pwa-build.test.js"
   },
   "dependencies": {

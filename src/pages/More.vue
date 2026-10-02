@@ -1,6 +1,6 @@
 <template>
   <main class="page">
-    <PageHeader title="更多" kicker="PERSONAL TOOLS" />
+    <PageHeader title="更多" />
     <MenuCard>
       <van-cell title="计薪规则" label="基准时薪、倍率与固定收入" is-link @click="$router.push('/rules')">
         <template #icon><MenuIcon name="balance-list-o" /></template>
