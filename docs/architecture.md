@@ -16,7 +16,9 @@ IndexedDB 版本 1 使用 `state` store 的 `personal` 单记录保存完整业�
 
 保留 Vue、Vant 与 Vite。首页采用轻量白色收入卡和清晰的记录入口，页面不使用英文装饰标题；正文及输入框以 16px 为基准，辅助文字适当缩小。主导航保持首页、统计、更多；详情和设置使用同一顶部返回栏，仅主导航页面预留底部标签栏空间。
 
-界面图标保留 Vant 的名称与组件接口，由 `src/assets/icons` 中的 21 个本地 SVG 渲染。`tools/vant-svg-icons.mjs` 在开发及构建时将 Vant 图标字体样式统一替换为 `src/styles/icons.css`，包含组件内部间接引入的样式；构建不包含图标字体和 CDN 回退。SVG 作为 CSS 遮罩使用 `currentColor` 与 `1em` 继承原有颜色、大小，提供 `-webkit-mask` 和标准 `mask`。小型 SVG 内嵌到构建 CSS，随既有 Service Worker 一起离线缓存。新增图标需同时增加 SVG、名称映射及构建验证覆盖；升级 Vant 后必须通过图标制品验证。
+界面图标保留 Vant 的名称与组件接口，由 `src/assets/icons` 中的 22 个本地 SVG 渲染，包含已注册复选组件的半选 `minus` 状态。`tools/vant-svg-icons.mjs` 在开发及构建时将 Vant 图标字体样式统一替换为 `src/styles/icons.css`，包含组件内部间接引入的样式；构建不包含图标字体和 CDN 回退。SVG 作为 CSS 遮罩使用 `currentColor` 与 `1em` 继承原有颜色、大小，提供 `-webkit-mask` 和标准 `mask`。小型 SVG 内嵌到构建 CSS，随既有 Service Worker 一起离线缓存。新增图标需同时增加 SVG、名称映射及构建验证覆盖；升级 Vant 后必须通过图标制品验证。
+
+图标验证扫描全部 Vue 页面的静态名称和动态分支，无法审计的新动态表达式需提供明确覆盖；另验证 Vant 弹层、标签、提示及复选组件内部图标，和开发依赖预构建后的实际样式导入。主屏幕安装图标仍保留本地 PNG，原生输入控件的系统图形由设备提供。
 
 全局按钮字体继承规则排除 `.van-icon`，避免覆盖带按钮角色的关闭图标样式。图标替换只影响呈现，不改变点击事件、选中状态或业务操作。
 
