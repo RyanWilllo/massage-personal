@@ -85,6 +85,9 @@ export async function receiveMigration(token) {
 }
 
 export async function importMigration(prepared) {
+  // Vue pages pass reactive proxies. Capture a plain immutable preview before
+  // the first await; neither structuredClone nor IndexedDB can clone a Proxy.
+  prepared = JSON.parse(JSON.stringify(prepared))
   // Revalidate the in-memory preview immediately before committing; never
   // trust an old preview if another tab has written meanwhile.
   validateSource(prepared.data)

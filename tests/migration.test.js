@@ -2,6 +2,7 @@ import test, { beforeEach, afterEach } from 'node:test'
 import assert from 'node:assert/strict'
 import { readFile } from 'node:fs/promises'
 import 'fake-indexeddb/auto'
+import { reactive } from 'vue'
 import { prepareMigration, importMigration, verifySavedMigration, sha256, monthlyReconciliation } from '../src/services/migration.js'
 import { closeDatabase, readState, transaction, DATABASE_NAME } from '../src/storage/database.js'
 import { quickService, getService, updateServiceRemark } from '../src/services/records.js'
@@ -106,4 +107,12 @@ test('zero-history migration still preserves rules and blocks duplicate imports'
   assert.equal((await importMigration(preview)).status, 'verified')
   assert.equal((await readState()).services.length, 0)
   await assert.rejects(importMigration(preview))
+})
+
+test('real Vue reactive page preview saves without passing proxies into IndexedDB', async () => {
+  const preview = reactive(await prepared())
+  const receipt = await importMigration(preview)
+  assert.equal(receipt.status, 'verified')
+  await closeDatabase()
+  assert.deepEqual((await readState()).services, JSON.parse(JSON.stringify(preview.data.services)))
 })
