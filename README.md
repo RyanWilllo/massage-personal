@@ -34,10 +34,12 @@ GitHub Pages 地址以成功的部署记录为准，发布说明见 [托管](doc
 - [托管与验证](docs/hosting.md)
 - [本地验证结果](docs/validation.md)
 
-原团队项目作为参考保留，当前发布不代表历史数据已迁入，也不代表旧系统已下线。
+本人已确认 iPhone 历史迁入验收完成。1.3.0 撤除临时迁入入口和旧站连接权限，保留手机记录与核对标记；旧项目继续作为历史参考，切换记录见[迁入记录](docs/migration.md)。
 
 正式入口：[打开个人版](https://ryanwilllo.github.io/massage-personal/)。
 
 - [1.1.1 发布记录](docs/releases/1.1.1.md)
 - [1.1.0 发布记录](docs/releases/1.1.0.md)
 - [1.0.0 发布记录](docs/releases/1.0.0.md)
+
+- [1.3.0 最终发布记录](docs/releases/1.3.0.md)
