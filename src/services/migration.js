@@ -2,6 +2,12 @@ import { decimal, sum } from '../domain/precision.js'
 import { initialState } from '../domain/defaults.js'
 import { transaction, readState, closeDatabase } from '../storage/database.js'
 
+// Object field order is not business data. Retain array order and exact values
+// while making defaults checks and persisted fingerprints codec-independent.
+const canonicalJson = value => JSON.stringify(value, (_, item) =>
+  item && typeof item === 'object' && !Array.isArray(item)
+    ? Object.fromEntries(Object.entries(item).sort(([a], [b]) => a < b ? -1 : a > b ? 1 : 0)) : item)
+
 const invalid = () => { throw new Error('旧记录或规则不完整，已停止迁入，原有数据未改变') }
 const id = value => { if (!Number.isSafeInteger(value) || value < 1 || value >= Number.MAX_SAFE_INTEGER) invalid(); return value }
 const number = value => {
@@ -92,15 +98,17 @@ export async function importMigration(prepared) {
   // trust an old preview if another tab has written meanwhile.
   validateSource(prepared.data)
   if (await sha256(JSON.stringify(prepared.data)) !== prepared.sha256 || JSON.stringify(monthlyReconciliation(prepared.data.services)) !== JSON.stringify(prepared.months)) invalid()
+  const dataSha256 = await sha256(canonicalJson(prepared.data))
   await transaction(state => {
     if (state.migration) throw new Error('已迁入过旧记录，请勿重复迁入')
-    if (JSON.stringify(state) !== JSON.stringify(initialState())) throw new Error('个人版已有记录或规则修改，不能覆盖；请联系小罗核对')
+    if (state.services.length) throw new Error(`个人版已有 ${state.services.length} 条记录，已停止迁入，原有数据未改变`)
+    if (canonicalJson(state) !== canonicalJson(initialState())) throw new Error('个人版规则、项目设置或录入历史已变化，已停止迁入，原有数据未改变')
     const source = structuredClone(prepared.data)
     Object.assign(state, source, {
       nextServiceId: source.services.reduce((n, s) => Math.max(n, s.service_id), 0) + 1,
       nextItemId: source.services.reduce((n, s) => s.items.reduce((k, i) => Math.max(k, i.item_id), n), 0) + 1,
       nextVersionId: source.versions.reduce((n, v) => Math.max(n, v.id), 0) + 1,
-      migration: { status: 'pending', sha256: prepared.sha256, months: prepared.months },
+      migration: { status: 'pending', sha256: prepared.sha256, dataSha256, months: prepared.months },
     })
   })
   return verifySavedMigration()
@@ -113,9 +121,12 @@ export async function verifySavedMigration() {
   if (state.migration.status === 'verified') return state.migration
   const data = { projects: state.projects, versions: state.versions, services: state.services }
   validateSource(data)
-  if (await sha256(JSON.stringify(data)) !== state.migration.sha256 || JSON.stringify(monthlyReconciliation(data.services)) !== JSON.stringify(state.migration.months)) throw new Error('手机保存核对未通过，请停止录入并联系小罗')
+  // Keep the original wire hash for audit; new receipts also store a canonical
+  // content hash. Older pending receipts retain their original verification.
+  const savedHash = await sha256(state.migration.dataSha256 ? canonicalJson(data) : JSON.stringify(data))
+  if (savedHash !== (state.migration.dataSha256 ?? state.migration.sha256) || canonicalJson(monthlyReconciliation(data.services)) !== canonicalJson(state.migration.months)) throw new Error('手机保存核对未通过，请停止录入并联系小罗')
   return transaction(saved => {
-    if (JSON.stringify(saved.migration) !== JSON.stringify(state.migration)) throw new Error('迁入状态已变化，请重试核对')
+    if (canonicalJson(saved.migration) !== canonicalJson(state.migration)) throw new Error('迁入状态已变化，请重试核对')
     saved.migration.status = 'verified'
     return saved.migration
   }, 'readwrite', { allowPendingMigration: true })

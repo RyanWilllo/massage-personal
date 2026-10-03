@@ -3,6 +3,7 @@ import assert from 'node:assert/strict'
 import { readFile } from 'node:fs/promises'
 import 'fake-indexeddb/auto'
 import { reactive } from 'vue'
+import { initialState } from '../src/domain/defaults.js'
 import { prepareMigration, importMigration, verifySavedMigration, sha256, monthlyReconciliation } from '../src/services/migration.js'
 import { closeDatabase, readState, transaction, DATABASE_NAME } from '../src/storage/database.js'
 import { quickService, getService, updateServiceRemark } from '../src/services/records.js'
@@ -115,4 +116,72 @@ test('real Vue reactive page preview saves without passing proxies into IndexedD
   assert.equal(receipt.status, 'verified')
   await closeDatabase()
   assert.deepEqual((await readState()).services, JSON.parse(JSON.stringify(preview.data.services)))
+})
+
+// A storage codec may reconstruct object properties in a different order.
+// Arrays retain their order; this must not turn an untouched phone into edits.
+const reorderedObjects = value => Array.isArray(value) ? value.map(reorderedObjects)
+  : value && typeof value === 'object'
+    ? Object.fromEntries(Object.entries(value).reverse().map(([key, item]) => [key, reorderedObjects(item)])) : value
+
+test('untouched persisted defaults remain eligible after all object keys are reordered', async () => {
+  await transaction(state => {
+    const reordered = reorderedObjects(initialState())
+    for (const key of Object.keys(state)) delete state[key]
+    Object.assign(state, reordered)
+  })
+  assert.equal((await importMigration(await prepared())).status, 'verified')
+})
+
+test('migration readback verifies content even when the storage codec reorders all object keys', async () => {
+  const originalPut = IDBObjectStore.prototype.put
+  IDBObjectStore.prototype.put = function(value, ...args) {
+    return originalPut.call(this, reorderedObjects(value), ...args)
+  }
+  try {
+    const preview = reactive(await prepared())
+    assert.equal((await importMigration(preview)).status, 'verified')
+    await closeDatabase()
+    const saved = await readState()
+    assert.deepEqual(saved.services, JSON.parse(JSON.stringify(preview.data.services)))
+    assert.deepEqual(saved.migration.months, preview.months)
+  } finally { IDBObjectStore.prototype.put = originalPut }
+})
+
+test('reordered defaults with real project edits are still rejected without changing data', async () => {
+  await transaction(state => {
+    state.projects[0].status = 0
+    const reordered = reorderedObjects(state)
+    for (const key of Object.keys(state)) delete state[key]
+    Object.assign(state, reordered)
+  })
+  const before = await readState()
+  await assert.rejects(importMigration(await prepared()))
+  assert.deepEqual(await readState(), before)
+})
+
+test('deleted local records and altered default array order do not bypass empty-phone protection', async () => {
+  await quickService(data())
+  await transaction(state => { state.services = [] })
+  const before = await readState()
+  await assert.rejects(importMigration(await prepared()))
+  assert.deepEqual(await readState(), before)
+  await transaction(state => {
+    Object.assign(state, initialState())
+    state.projects.reverse()
+  })
+  const reordered = await readState()
+  await assert.rejects(importMigration(await prepared()))
+  assert.deepEqual(await readState(), reordered)
+})
+
+test('canonical saved fingerprint still rejects changed snapshots and keeps recording blocked', async () => {
+  await importMigration(await prepared())
+  await transaction(state => {
+    state.migration.status = 'pending'
+    state.services[0].remark = 'changed after saving'
+  })
+  await assert.rejects(verifySavedMigration(), /保存核对未通过/)
+  assert.equal((await readState()).migration.status, 'pending')
+  await assert.rejects(quickService(data()))
 })
