@@ -4,7 +4,6 @@
     <PageState v-else-if="error" type="error" :message="error" action-text="重试" @action="load" />
     <template v-else>
       <MenuCard>
-        <van-cell v-if="!migrationDone" title="迁入旧记录" is-link @click="$router.push('/migration')" />
         <van-cell title="版本" :value="info.version" />
         <van-cell title="已保存记录" :value="`${info.record_count} 条`" />
         <van-cell title="最早记录" :value="info.first_date" />
@@ -23,19 +22,17 @@
 </template>
 <script setup>
 import { ref, onMounted, onBeforeUnmount } from 'vue'
-import { readState } from '../storage/database.js'
 import { getSystemInfo } from '../services/rules'
 import SettingsPageShell from '../components/SettingsPageShell.vue'
 import MenuCard from '../components/MenuCard.vue'
 import PageState from '../components/PageState.vue'
 import { checkForUpdate, applyUpdate, getPwaState } from '../pwa/register.js'
-const migrationDone = ref(false)
 const info = ref({}), loading = ref(true), error = ref(''), checking = ref(false)
 const offlineReady = ref(false), updateReady = ref(false), updateMessage = ref('')
 const syncPwa = () => { const state = getPwaState(); offlineReady.value = state.offlineReady; updateReady.value = state.updateReady }
 async function load() {
   loading.value = true; error.value = ''
-  try { info.value = await getSystemInfo(); migrationDone.value = (await readState()).migration?.status === 'verified' } catch (e) { error.value = e.message }
+  try { info.value = await getSystemInfo() } catch (e) { error.value = e.message }
   finally { loading.value = false }
 }
 async function checkUpdate() {

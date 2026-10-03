@@ -92,3 +92,19 @@ test('updates activate only after explicit user request', async () => {
   app.handlers.message({ data: { type: 'ACTIVATE_UPDATE' } })
   assert.ok(app.operations.some(op => op[0] === 'skipWaiting'))
 })
+
+
+test('retired migration route and cross-origin permissions are absent from published program', async () => {
+  const html = await readFile(resolve(output, 'index.html'), 'utf8')
+  assert.ok(html.includes("connect-src 'self';"))
+  assert.ok(!html.includes('https://xiaolo.xyz'))
+  for (const name of await readdir(resolve(output, 'assets'))) {
+    assert.ok(!name.startsWith('PersonalMigration-'))
+    if (name.endsWith('.js')) {
+      const content = await readFile(resolve(output, 'assets', name), 'utf8')
+      assert.ok(!content.includes('/api/personal-transfer'), name)
+      assert.ok(!content.includes('https://xiaolo.xyz'), name)
+      assert.ok(!content.includes('迁入旧记录'), name)
+    }
+  }
+})

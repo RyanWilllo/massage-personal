@@ -1,6 +1,6 @@
-import { decimal, sum } from '../domain/precision.js'
-import { initialState } from '../domain/defaults.js'
-import { transaction, readState, closeDatabase } from '../storage/database.js'
+import { decimal, sum } from '../src/domain/precision.js'
+import { initialState } from '../src/domain/defaults.js'
+import { transaction, readState, closeDatabase } from '../src/storage/database.js'
 
 // Object field order is not business data. Retain array order and exact values
 // while making defaults checks and persisted fingerprints codec-independent.
@@ -77,17 +77,6 @@ export async function prepareMigration(payload) {
     return Object.keys(m).some(key => m[key] !== row[key])
   })) invalid()
   return { data, months, sha256: payload.sha256 }
-}
-
-export async function receiveMigration(token) {
-  if (!token || token.length > 4096 || /\s/.test(token)) throw new Error('请粘贴有效迁移码')
-  const response = await fetch('https://xiaolo.xyz/api/personal-transfer/receive', {
-    method: 'GET', headers: { Authorization: `Bearer ${token}` }, credentials: 'omit',
-    cache: 'no-store', redirect: 'error', referrerPolicy: 'no-referrer', signal: AbortSignal.timeout(60_000),
-  })
-  const body = await response.json()
-  if (!response.ok || body.code !== 0) throw new Error(body.message || '读取失败，请重新取得迁移码')
-  return prepareMigration(body.data)
 }
 
 export async function getMigrationTarget() {

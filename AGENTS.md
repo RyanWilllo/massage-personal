@@ -21,3 +21,5 @@
 - 2026-10-03 stage 2 explicitly authorized: freeze legacy business writes and enable temporary owner-only transfer; final iPhone import/readback requires user operation. See docs/migration.md. No old DB deletion or unrelated service changes.
 
 - 2026-10-03 本人确认手机已保存测试记录，明确允许删除后迁入。仅在迁入页显示记录数并明确选择替换，在同一原子事务完成；预览后的写入、独立规则修改和已迁入标记继续受保护，禁止通用清库或自动覆盖。
+
+- 2026-10-03 本人确认 iPhone 迁入验收完成，并授权停止旧 API、月结与业务任务；个人版已撤除临时迁入代码和旧站连接权限。旧库和历史快照保留。迁入核对函数仅在 tools 中供合成回归测试使用，不进入应用制品；程序更新不得重写设备数据。

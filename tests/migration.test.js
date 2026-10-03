@@ -3,10 +3,8 @@ import assert from 'node:assert/strict'
 import { readFile } from 'node:fs/promises'
 import 'fake-indexeddb/auto'
 import { reactive } from 'vue'
-import * as vue from 'vue'
-import { parse, compileScript } from '@vue/compiler-sfc'
 import { initialState } from '../src/domain/defaults.js'
-import { prepareMigration, importMigration, verifySavedMigration, sha256, monthlyReconciliation, getMigrationTarget } from '../src/services/migration.js'
+import { prepareMigration, importMigration, verifySavedMigration, sha256, monthlyReconciliation, getMigrationTarget } from '../tools/migration-audit.js'
 import { closeDatabase, readState, transaction, DATABASE_NAME } from '../src/storage/database.js'
 import { quickService, getService, updateServiceRemark } from '../src/services/records.js'
 import { updateBasePrice, getIncomeRules } from '../src/services/rules.js'
@@ -248,38 +246,12 @@ test('test replacement abort leaves original records intact if IndexedDB saving 
 })
 
 
-test('real migration page reviews test-record count and saves its reactive preview with explicit replacement', async t => {
-  await quickService(data())
-  const source = await readFile(new URL('../src/pages/PersonalMigration.vue', import.meta.url), 'utf8')
-  const script = compileScript(parse(source).descriptor, { id: 'migration-page-test' }).content
-    .replace(/^import (\{[^\n]+\}|\w+) from '([^']+)'$/gm, (_, names, path) => `const ${names} = modules[${JSON.stringify(path)}]`)
-    .replace('export default', 'return')
-  const component = new Function('modules', script)({
-    vue,
-    '../components/SettingsPageShell.vue': {}, '../components/PageState.vue': {}, '../components/MigrationSummary.vue': {},
-    '../storage/database.js': { readState },
-    '../services/migration.js': { receiveMigration: prepared, importMigration, verifySavedMigration, getMigrationTarget },
-  })
-  const renderer = vue.createRenderer({
-    createComment: () => ({}), insert() {}, remove() {}, parentNode: () => null,
-    nextSibling: () => null, setText() {}, setElementText() {}, patchProp() {},
-    createElement: () => ({}), createText: () => ({}),
-  })
-  let page
-  const app = renderer.createApp({ ...component,
-    setup(props, context) { page = component.setup(props, context); return page }, render: () => null })
-  app.mount({})
-  t.after(() => app.unmount())
-  while (page.loading.value) await new Promise(resolve => setImmediate(resolve))
-  page.token.value = 'synthetic-page-code'
-  await page.receive()
-  assert.equal(page.target.value.recordCount, 1)
-  assert.equal(page.target.value.canReplaceTestRecords, true)
-  assert.equal(page.token.value, '')
-  await page.save(true)
-  assert.equal(page.error.value, '')
-  assert.equal(page.receipt.value.status, 'verified')
-  assert.equal(page.prepared.value, null)
-  assert.equal(page.target.value, null)
-  assert.deepEqual((await readState()).services, (await prepared()).data.services)
+test('completed migration state survives final offline version reads without any rewrite', async () => {
+  await importMigration(await prepared())
+  const before = await readState()
+  await closeDatabase()
+  assert.deepEqual(await readState(), before)
+  assert.equal((await getMonthlyStats('2026-10')).total_income, 110.3)
+  await closeDatabase()
+  assert.deepEqual(await readState(), before)
 })

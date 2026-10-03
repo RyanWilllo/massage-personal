@@ -9,7 +9,6 @@ export default createRouter({
     { path: '/more', component: () => import('../pages/More.vue'), meta: { showTabbar: true } },
     { path: '/rules', component: () => import('../pages/Rules.vue') },
     { path: '/projects', component: () => import('../pages/Projects.vue') },
-    { path: '/migration', component: () => import('../pages/PersonalMigration.vue') },
     { path: '/settings', component: () => import('../pages/Settings.vue') },
     { path: '/:pathMatch(.*)*', redirect: '/' },
   ],
