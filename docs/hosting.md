@@ -16,3 +16,5 @@ GitHub Pages 公网验证包括 HTTPS、首页和 manifest、图标、sw.js、�
 正式地址：https://ryanwilllo.github.io/massage-personal/ 。2026-10-03 的 1.1.1 SVG 图标修复已发布，37 个构建资源及 2 个发布标记均已公网核验通过，证据见 [1.1.1 发布记录](releases/1.1.1.md)。此前发布证据保留在 [1.1.0 发布记录](releases/1.1.0.md) 和 [1.0.0 发布记录](releases/1.0.0.md)。
 
 更新时先完成本地提交、npm ci、业务测试、固定 base 构建与离线制品验证。推送 main 源码后，将 dist（加 .nojekyll 及来源提交 release.json）在独立临时 checkout 中提交到 gh-pages，保持静态分支历史并正常快进推送，禁止强推。随后等待 Pages 构建成功，并用 tools/verify-published.mjs 核对全部资源。GitHub CLI 使用逐命令 HTTPS 认证，未修改全局凭据或旧团队仓库传输设置。
+
+2026-10-03 的 1.2.0 一次性迁入版本已发布，公网 43 项文件和标记核对通过。 [1.2.0](releases/1.2.0.md) records source and pending legacy freeze/iPhone import.
