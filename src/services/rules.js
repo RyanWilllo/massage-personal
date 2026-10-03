@@ -1,5 +1,6 @@
 import { readState, transaction } from '../storage/database.js'
 import { calculateItem, versionAt } from '../domain/calculator.js'
+import packageInfo from '../../package.json' with { type: 'json' }
 import { decimal } from '../domain/precision.js'
 import { businessDateTime } from '../utils/date.js'
 import { DATABASE_VERSION } from '../storage/database.js'
@@ -55,7 +56,7 @@ export const updateIncomeRule = (id, data) => transaction(state => {
 })
 export async function getSystemInfo() {
   const state = await readState()
-  return { version: '1.1.0', schema_version: DATABASE_VERSION,
+  return { version: packageInfo.version, schema_version: DATABASE_VERSION,
     project_count: state.projects.length, record_count: state.services.length,
     first_date: state.services.map(s => s.service_date).sort()[0] ?? '—' }
 }
