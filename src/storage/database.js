@@ -26,7 +26,7 @@ export function openDatabase() {
 
 // One atomic state record serializes mutations across all tabs. Domain callbacks
 // must be synchronous so Safari cannot auto-close a transaction between awaits.
-export async function transaction(mutate, mode = 'readwrite') {
+export async function transaction(mutate, mode = 'readwrite', { allowPendingMigration = false } = {}) {
   const db = await openDatabase()
   return new Promise((resolve, reject) => {
     const tx = db.transaction('state', mode)
@@ -36,6 +36,7 @@ export async function transaction(mutate, mode = 'readwrite') {
     request.onsuccess = () => {
       try {
         const state = request.result ?? initialState()
+        if (mode === 'readwrite' && state.migration?.status === 'pending' && !allowPendingMigration) throw new Error('请先完成迁入保存核对，再录入新服务')
         result = mutate(state)
         if (result?.then) throw new Error('数据库事务不能执行异步业务操作')
         if (mode === 'readwrite') store.put(state, 'personal')

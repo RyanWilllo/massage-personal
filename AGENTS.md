@@ -17,3 +17,5 @@
 - 依赖使用 npm 与 package-lock.json，构建使用 npm ci。变更同步权威文档、CHANGELOG 并提交 Git。
 - 相关自动测试与构建必须执行。未经用户明确要求，不运行真实浏览器、点击流程或声称完成 iPhone 实机验收。
 - 当前用户已明确授权公开个人版程序源码、创建独立仓库和 GitHub Pages 发布。后续外部发布须遵循当次用户授权。
+
+- 2026-10-03 stage 2 explicitly authorized: freeze legacy business writes and enable temporary owner-only transfer; final iPhone import/readback requires user operation. See docs/migration.md. No old DB deletion or unrelated service changes.

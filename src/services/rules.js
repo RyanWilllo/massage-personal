@@ -21,10 +21,10 @@ const newVersion = (state, change) => {
   state.versions.push(version)
   return version
 }
-export const getProjects = async () => (await readState()).projects
+export const getProjects = async () => (await readState()).projects.filter(p => p.category !== 'addon_time')
 export const updateProject = (id, data) => transaction(state => {
   const project = state.projects.find(p => p.project_id === Number(id))
-  if (!project || ![0, 1].includes(data.status)) throw new Error('项目状态无效')
+  if (!project || project.category === 'addon_time' || ![0, 1].includes(data.status)) throw new Error('项目状态无效')
   project.status = data.status
   return project
 })
@@ -34,7 +34,7 @@ export const updateBasePrice = data => transaction(state => ({
 }))
 export async function getIncomeRules() {
   const state = await readState(), version = current(state)
-  return state.projects.map(project => {
+  return state.projects.filter(project => project.category !== 'addon_time').map(project => {
     const id = project.project_id, rule = version.rules[id]
     const example = rule.pay_type === 'work'
       ? calculateItem({ ...project, status: 1 }, id === 3 ? 90 : id === 1 || id === 2 ? 60 : 30, version)

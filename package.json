@@ -1,13 +1,13 @@
 {
   "name": "massage-personal",
   "private": true,
-  "version": "1.1.1",
+  "version": "1.2.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "test": "node --test tests/domain.test.js tests/storage.test.js tests/record-flow.test.js",
+    "test": "node --test tests/domain.test.js tests/storage.test.js tests/record-flow.test.js tests/migration.test.js",
     "verify:build": "node --test tests/pwa-build.test.js tests/icons-build.test.js tests/icons-dev.test.js"
   },
   "dependencies": {

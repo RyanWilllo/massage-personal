@@ -14,7 +14,7 @@ const present = service => ({ ...service, total_work_hours: hours(service.total_
   main_project_name: service.items.find(i => i.item_type === 'main')?.project_name ?? '',
   service_project_names: service.items.filter(i => i.item_type !== 'extra_income').map(i => i.project_name).join(' + '),
 })
-export const getAvailableProjects = async () => (await readState()).projects.filter(p => p.status === 1)
+export const getAvailableProjects = async () => (await readState()).projects.filter(p => p.status === 1 && p.category !== 'addon_time')
 export const getService = id => transaction(state => present(find(state, id)), 'readonly')
 export const deleteService = id => transaction(state => {
   find(state, id); state.services = state.services.filter(s => s.service_id !== Number(id))
