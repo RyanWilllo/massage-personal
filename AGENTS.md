@@ -19,3 +19,5 @@
 - 当前用户已明确授权公开个人版程序源码、创建独立仓库和 GitHub Pages 发布。后续外部发布须遵循当次用户授权。
 
 - 2026-10-03 stage 2 explicitly authorized: freeze legacy business writes and enable temporary owner-only transfer; final iPhone import/readback requires user operation. See docs/migration.md. No old DB deletion or unrelated service changes.
+
+- 2026-10-03 本人确认手机已保存测试记录，明确允许删除后迁入。仅在迁入页显示记录数并明确选择替换，在同一原子事务完成；预览后的写入、独立规则修改和已迁入标记继续受保护，禁止通用清库或自动覆盖。

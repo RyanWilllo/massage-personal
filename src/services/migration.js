@@ -90,7 +90,17 @@ export async function receiveMigration(token) {
   return prepareMigration(body.data)
 }
 
-export async function importMigration(prepared) {
+export async function getMigrationTarget() {
+  const state = await readState()
+  const signature = canonicalJson(state)
+  const defaults = initialState()
+  const withoutTestRecords = { ...state, services: [], nextServiceId: 1, nextItemId: 1 }
+  return { recordCount: state.services.length, signature,
+    changed: signature !== canonicalJson(defaults),
+    canReplaceTestRecords: !state.migration && canonicalJson(withoutTestRecords) === canonicalJson(defaults) }
+}
+
+export async function importMigration(prepared, { replaceTestRecords = false, targetSignature } = {}) {
   // Vue pages pass reactive proxies. Capture a plain immutable preview before
   // the first await; neither structuredClone nor IndexedDB can clone a Proxy.
   prepared = JSON.parse(JSON.stringify(prepared))
@@ -101,8 +111,14 @@ export async function importMigration(prepared) {
   const dataSha256 = await sha256(canonicalJson(prepared.data))
   await transaction(state => {
     if (state.migration) throw new Error('已迁入过旧记录，请勿重复迁入')
-    if (state.services.length) throw new Error(`个人版已有 ${state.services.length} 条记录，已停止迁入，原有数据未改变`)
-    if (canonicalJson(state) !== canonicalJson(initialState())) throw new Error('个人版规则、项目设置或录入历史已变化，已停止迁入，原有数据未改变')
+    if (replaceTestRecords) {
+      if (typeof targetSignature !== 'string' || canonicalJson(state) !== targetSignature) throw new Error('手机记录已变化，请重新读取并核对后再迁入，原有数据未改变')
+      const withoutTestRecords = { ...state, services: [], nextServiceId: 1, nextItemId: 1 }
+      if (canonicalJson(withoutTestRecords) !== canonicalJson(initialState())) throw new Error('个人版规则或项目设置已修改，已停止替换，原有数据未改变')
+    } else {
+      if (state.services.length) throw new Error(`个人版已有 ${state.services.length} 条记录，已停止迁入，原有数据未改变`)
+      if (canonicalJson(state) !== canonicalJson(initialState())) throw new Error('个人版规则、项目设置或录入历史已变化，已停止迁入，原有数据未改变')
+    }
     const source = structuredClone(prepared.data)
     Object.assign(state, source, {
       nextServiceId: source.services.reduce((n, s) => Math.max(n, s.service_id), 0) + 1,

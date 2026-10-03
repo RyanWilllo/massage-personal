@@ -3,8 +3,10 @@ import assert from 'node:assert/strict'
 import { readFile } from 'node:fs/promises'
 import 'fake-indexeddb/auto'
 import { reactive } from 'vue'
+import * as vue from 'vue'
+import { parse, compileScript } from '@vue/compiler-sfc'
 import { initialState } from '../src/domain/defaults.js'
-import { prepareMigration, importMigration, verifySavedMigration, sha256, monthlyReconciliation } from '../src/services/migration.js'
+import { prepareMigration, importMigration, verifySavedMigration, sha256, monthlyReconciliation, getMigrationTarget } from '../src/services/migration.js'
 import { closeDatabase, readState, transaction, DATABASE_NAME } from '../src/storage/database.js'
 import { quickService, getService, updateServiceRemark } from '../src/services/records.js'
 import { updateBasePrice, getIncomeRules } from '../src/services/rules.js'
@@ -184,4 +186,100 @@ test('canonical saved fingerprint still rejects changed snapshots and keeps reco
   await assert.rejects(verifySavedMigration(), /保存核对未通过/)
   assert.equal((await readState()).migration.status, 'pending')
   await assert.rejects(quickService(data()))
+})
+
+
+test('explicit test-record replacement atomically imports exact old snapshots and rules', async () => {
+  await quickService(data())
+  await quickService(data())
+  const target = await getMigrationTarget(), preview = await prepared()
+  assert.equal(target.recordCount, 2)
+  assert.equal(target.canReplaceTestRecords, true)
+  const result = await importMigration(preview, { replaceTestRecords: true, targetSignature: target.signature })
+  assert.equal(result.status, 'verified')
+  await closeDatabase()
+  assert.deepEqual((await readState()).services, preview.data.services)
+  assert.deepEqual((await readState()).versions, preview.data.versions)
+})
+
+test('replacement preserves test records when preview validation fails', async () => {
+  await quickService(data())
+  const target = await getMigrationTarget(), before = await readState(), preview = await prepared()
+  preview.data.services[0].remark = 'unexpected preview edit'
+  await assert.rejects(importMigration(preview, { replaceTestRecords: true, targetSignature: target.signature }))
+  assert.deepEqual(await readState(), before)
+})
+
+test('replacement detects new writes since preview and cannot run without reviewed target', async () => {
+  await quickService(data())
+  const target = await getMigrationTarget(), preview = await prepared()
+  await quickService(data())
+  const before = await readState()
+  await assert.rejects(importMigration(preview, { replaceTestRecords: true, targetSignature: target.signature }), /记录已变化/)
+  await assert.rejects(importMigration(preview, { replaceTestRecords: true }), /记录已变化/)
+  assert.deepEqual(await readState(), before)
+})
+
+test('test-record replacement does not discard independent rule edits or a previous import', async () => {
+  await quickService(data())
+  await updateBasePrice({ base_rate: 60 })
+  const target = await getMigrationTarget(), before = await readState()
+  assert.equal(target.canReplaceTestRecords, false)
+  await assert.rejects(importMigration(await prepared(), { replaceTestRecords: true, targetSignature: target.signature }), /规则或项目设置已修改/)
+  assert.deepEqual(await readState(), before)
+})
+
+test('explicit replacement cannot overwrite an already imported database', async () => {
+  await importMigration(await prepared())
+  const target = await getMigrationTarget(), before = await readState()
+  assert.equal(target.canReplaceTestRecords, false)
+  await assert.rejects(importMigration(await prepared(), { replaceTestRecords: true, targetSignature: target.signature }), /已迁入过/)
+  assert.deepEqual(await readState(), before)
+})
+
+test('test replacement abort leaves original records intact if IndexedDB saving fails', async () => {
+  await quickService(data())
+  const target = await getMigrationTarget(), before = await readState(), originalPut = IDBObjectStore.prototype.put
+  IDBObjectStore.prototype.put = function() { throw new DOMException('Storage is full', 'QuotaExceededError') }
+  try {
+    await assert.rejects(importMigration(await prepared(), { replaceTestRecords: true, targetSignature: target.signature }))
+    assert.deepEqual(await readState(), before)
+  } finally { IDBObjectStore.prototype.put = originalPut }
+})
+
+
+test('real migration page reviews test-record count and saves its reactive preview with explicit replacement', async t => {
+  await quickService(data())
+  const source = await readFile(new URL('../src/pages/PersonalMigration.vue', import.meta.url), 'utf8')
+  const script = compileScript(parse(source).descriptor, { id: 'migration-page-test' }).content
+    .replace(/^import (\{[^\n]+\}|\w+) from '([^']+)'$/gm, (_, names, path) => `const ${names} = modules[${JSON.stringify(path)}]`)
+    .replace('export default', 'return')
+  const component = new Function('modules', script)({
+    vue,
+    '../components/SettingsPageShell.vue': {}, '../components/PageState.vue': {}, '../components/MigrationSummary.vue': {},
+    '../storage/database.js': { readState },
+    '../services/migration.js': { receiveMigration: prepared, importMigration, verifySavedMigration, getMigrationTarget },
+  })
+  const renderer = vue.createRenderer({
+    createComment: () => ({}), insert() {}, remove() {}, parentNode: () => null,
+    nextSibling: () => null, setText() {}, setElementText() {}, patchProp() {},
+    createElement: () => ({}), createText: () => ({}),
+  })
+  let page
+  const app = renderer.createApp({ ...component,
+    setup(props, context) { page = component.setup(props, context); return page }, render: () => null })
+  app.mount({})
+  t.after(() => app.unmount())
+  while (page.loading.value) await new Promise(resolve => setImmediate(resolve))
+  page.token.value = 'synthetic-page-code'
+  await page.receive()
+  assert.equal(page.target.value.recordCount, 1)
+  assert.equal(page.target.value.canReplaceTestRecords, true)
+  assert.equal(page.token.value, '')
+  await page.save(true)
+  assert.equal(page.error.value, '')
+  assert.equal(page.receipt.value.status, 'verified')
+  assert.equal(page.prepared.value, null)
+  assert.equal(page.target.value, null)
+  assert.deepEqual((await readState()).services, (await prepared()).data.services)
 })

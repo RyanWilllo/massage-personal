@@ -17,7 +17,13 @@
       <template v-else>
         <p class="migration-note" role="status">逐月金额、计薪分钟、记录数和明细核对通过。确认下方数据属于你，再保存到手机。</p>
         <MigrationSummary :months="prepared.months" />
-        <van-button type="primary" block :loading="busy" @click="save">确认是本人记录，保存到手机</van-button>
+        <template v-if="target?.changed">
+          <p class="migration-note" role="status">手机已有 {{ target.recordCount }} 条记录。只有确认它们都是测试记录，才可用上方旧记录替换；保存失败会保留原有数据。</p>
+          <van-button v-if="target.canReplaceTestRecords" type="danger" block :loading="busy" @click="save(true)">确认替换测试记录并迁入</van-button>
+          <p v-else class="migration-note" role="alert">个人版规则或项目设置也有修改，已停止替换，请先核对。</p>
+        </template>
+        <van-button v-else type="primary" block :loading="busy" @click="save(false)">确认是本人记录，保存到手机</van-button>
+        <van-button plain block :disabled="busy" @click="restart">重新读取</van-button>
       </template>
     </template>
     <p v-if="error" class="migration-note" role="alert">{{ error }}</p>
@@ -29,8 +35,8 @@ import SettingsPageShell from '../components/SettingsPageShell.vue'
 import PageState from '../components/PageState.vue'
 import MigrationSummary from '../components/MigrationSummary.vue'
 import { readState } from '../storage/database.js'
-import { receiveMigration, importMigration, verifySavedMigration } from '../services/migration.js'
-const token = ref(''), prepared = ref(null), receipt = ref(null), busy = ref(false), loading = ref(true), error = ref('')
+import { receiveMigration, importMigration, verifySavedMigration, getMigrationTarget } from '../services/migration.js'
+const token = ref(''), prepared = ref(null), target = ref(null), receipt = ref(null), busy = ref(false), loading = ref(true), error = ref('')
 let disposed = false
 async function run(action) {
   if (busy.value) return
@@ -38,14 +44,18 @@ async function run(action) {
   try { await action() } catch (e) { if (!disposed) error.value = e.message || '迁入失败，请检查网络后重试' }
   finally { busy.value = false }
 }
-const receive = () => run(async () => { const preview = await receiveMigration(token.value); token.value = ''; if (!disposed) prepared.value = preview })
-const save = () => run(async () => {
-  try { const result = await importMigration(prepared.value); if (!disposed) { receipt.value = result; prepared.value = null } }
+const receive = () => run(async () => {
+  const preview = await receiveMigration(token.value), local = await getMigrationTarget()
+  token.value = ''; if (!disposed) { prepared.value = preview; target.value = local }
+})
+const restart = () => { prepared.value = null; target.value = null; error.value = '' }
+const save = (replaceTestRecords = false) => run(async () => {
+  try { const result = await importMigration(prepared.value, { replaceTestRecords, targetSignature: target.value?.signature }); if (!disposed) { receipt.value = result; prepared.value = null; target.value = null } }
   catch (e) { const state = await readState(); if (!disposed) receipt.value = state.migration ?? null; throw e }
 })
 const verify = () => run(async () => { const result = await verifySavedMigration(); if (!disposed) receipt.value = result })
 onMounted(async () => { try { receipt.value = (await readState()).migration ?? null } catch (e) { error.value = e.message } finally { loading.value = false } })
-onBeforeUnmount(() => { disposed = true; token.value = ''; prepared.value = null })
+onBeforeUnmount(() => { disposed = true; token.value = ''; prepared.value = null; target.value = null })
 </script>
 <style scoped>
 .migration-note { margin: var(--space-4) 0; padding: var(--space-4); color: var(--c-text-2); font-size: var(--text-sm); line-height: 1.65; }
