@@ -17,6 +17,8 @@ GitHub Pages 公网验证包括 HTTPS、首页和 manifest、图标、sw.js、�
 
 更新时先完成本地提交、npm ci、业务测试、固定 base 构建与离线制品验证。推送 main 源码后，将 dist（加 .nojekyll 及来源提交 release.json）在独立临时 checkout 中提交到 gh-pages，保持静态分支历史并正常快进推送，禁止强推。随后等待 Pages 构建成功，并用 tools/verify-published.mjs 核对全部资源。GitHub CLI 使用逐命令 HTTPS 认证，未修改全局凭据或旧团队仓库传输设置。
 
-2026-10-03 的 1.2.0 一次性迁入版本已发布，公网 43 项文件和标记核对通过。 [1.2.0](releases/1.2.0.md) records source and pending legacy freeze/iPhone import.
+2026-10-03 的 1.2.0 一次性迁入版本已发布，公网 43 项文件和标记核对通过。 [1.2.0 发布记录](releases/1.2.0.md) 保存当次来源及待办状态。
 
 最新迁入版本为 1.2.1，已修复页面响应式预览对象的保存问题，公网 43 项资源核对通过。 [1.2.1](releases/1.2.1.md)
+
+旧站冻结及本人迁移通道已于 2026-10-03 受控发布并通过公网核验。当前可按[迁入流程](migration.md)在实际使用的 iPhone 主屏幕应用中保存旧记录；真实逐月核对、关闭重开持久化及旧系统下线尚未完成。
